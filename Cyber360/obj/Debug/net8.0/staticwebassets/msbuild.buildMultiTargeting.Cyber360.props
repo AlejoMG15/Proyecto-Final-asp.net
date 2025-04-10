@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Cyber360.props" />
+</Project>

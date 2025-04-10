@@ -1,0 +1,174 @@
+﻿@model Cyber360.Models.CatServi
+
+@{
+    ViewData["Title"] = "Editar Categoría";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-dark);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-form {
+        margin: 20px 0;
+    }
+
+    .cyber-form-group {
+        margin-bottom: 20px;
+    }
+
+    .cyber-label {
+        color: var(--cyber-blue);
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .cyber-input {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--cyber-gray);
+        border: 1px solid var(--cyber-blue);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+    }
+
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 10px var(--cyber-accent);
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 5px 10px 0;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-secondary {
+        background-color: var(--cyber-gray);
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: var(--cyber-dark);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .text-danger {
+        color: #ff4444;
+        font-size: 0.875em;
+        text-shadow: 0 0 5px #ff0000;
+    }
+
+    .cyber-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, var(--cyber-blue), transparent);
+        margin: 20px 0;
+    }
+
+    .cyber-text-muted {
+        color: var(--cyber-gray);
+        font-style: italic;
+    }
+</style>
+
+<div class="cyber-container">
+    <div class="cyber-header">
+        <i class="fas fa-edit"></i> EDITAR CATEGORÍA
+    </div>
+
+    <div class="cyber-form">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="cyber-form-group">
+                <label class="cyber-label" asp-for="Nombre"></label>
+                <input asp-for="Nombre" class="cyber-input" required />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="cyber-form-group">
+                <button type="submit" class="cyber-btn cyber-btn-primary">
+                    <i class="fas fa-save"></i> GUARDAR CAMBIOS
+                </button>
+                <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+                    <i class="fas fa-arrow-left"></i> REGRESAR
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="cyber-hr"></div>
+
+    <div class="cyber-text-muted">
+        <i class="fas fa-info-circle"></i> ID de categoría: @Model.Id
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de enfoque en el campo de nombre
+            const nombreInput = document.querySelector('input[name="Nombre"]');
+            nombreInput.addEventListener('focus', function() {
+                this.style.backgroundColor = '#222';
+                this.style.boxShadow = '0 0 15px var(--cyber-accent)';
+            });
+            nombreInput.addEventListener('blur', function() {
+                this.style.backgroundColor = 'var(--cyber-gray)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+}

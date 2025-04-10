@@ -1,0 +1,302 @@
+﻿@model IEnumerable<Cyber360.Models.Producto>
+
+@{
+    ViewData["Title"] = "Inventario de Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Agrega esto al principio de tu vista Index -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success cyber-alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+    }
+
+    .cyber-table th {
+        background-color: var(--cyber-blue);
+        color: white;
+        padding: 12px;
+        text-align: left;
+        border: 1px solid var(--cyber-dark);
+    }
+
+    .cyber-table td {
+        padding: 10px 12px;
+        border: 1px solid var(--cyber-gray);
+        background-color: var(--cyber-dark);
+    }
+
+    .cyber-table tr:nth-child(even) td {
+        background-color: #222;
+    }
+
+    .cyber-table tr:hover td {
+        background-color: #1a1a1a;
+        color: var(--cr-screen);
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 2px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+    .cyber-btn-primary:hover {
+        background-color: #004080;
+        box-shadow: 0 0 10px var(--cyber-blue);
+    }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+    .cyber-btn-outline:hover {
+        background-color: rgba(0, 102, 204, 0.2);
+    }
+
+    .cyber-btn-accent {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+    .cyber-btn-accent:hover {
+        background-color: #cc5200;
+        box-shadow: 0 0 10px var(--cyber-accent);
+    }
+
+    .status-light {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    .status-on {
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+    }
+
+    .status-warning {
+        background-color: #ffcc00;
+        box-shadow: 0 0 5px #ffcc00;
+    }
+
+    .status-danger {
+        background-color: #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+    }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .stock-low {
+        color: #ff6666;
+        font-weight: bold;
+    }
+
+    .stock-ok {
+        color: #66ff66;
+    }
+
+    .pixel-border {
+        position: relative;
+    }
+
+    .pixel-border:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid var(--cyber-accent);
+        pointer-events: none;
+    }
+
+    .action-cell {
+        display: flex;
+        gap: 5px;
+    }
+
+    .cyber-footer {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.8rem;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="cyber-header">
+        <div>
+            <i class="fas fa-boxes"></i> INVENTARIO CYBER360
+        </div>
+        <div class="cr-effect">
+            @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-action="Create" class="cyber-btn cyber-btn-primary">
+            <i class="fas fa-plus-circle"></i> NUEVO PRODUCTO
+        </a>
+        <div class="cr-effect">
+            Mostrando @Model.Count() productos
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-tag"></i> PRODUCTO</th>
+                    <th><i class="fas fa-dollar-sign"></i> PRECIO</th>
+                    <th><i class="fas fa-layer-group"></i> STOCK</th>
+                    <th><i class="fas fa-folder"></i> CATEGORÍA</th>
+                    <th><i class="fas fa-cogs"></i> ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="status-light @(item.Cantidad > 10 ? "status-on" : item.Cantidad > 0 ? "status-warning" : "status-danger")"></span>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td class="cr-effect">
+                            $@Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td class="@(item.Cantidad > 10 ? "stock-ok" : "stock-low")">
+                            @Html.DisplayFor(modelItem => item.Cantidad) unidades
+                        </td>
+                        <td>
+                            @if (item.Categoria != null)
+                            {
+                                <span class="badge bg-secondary">@item.Categoria.Nombre</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin categoría</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="action-cell">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="cyber-btn cyber-btn-outline" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="cyber-btn cyber-btn-outline" title="Detalles">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="cyber-btn cyber-btn-accent" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">F1-Ayuda</span> |
+                <span class="cr-effect">F5-Actualizar</span> |
+                <span class="cr-effect">F9-Reporte</span>
+            </div>
+            <div>
+                <span class="cr-effect">© @DateTime.Now.Year Cyber360</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de parpadeo para los indicadores de stock bajo
+            const warningLights = document.querySelectorAll('.status-warning, .status-danger');
+            warningLights.forEach(light => {
+                setInterval(() => {
+                    light.style.opacity = light.style.opacity === '0.5' ? '1' : '0.5';
+                }, 800);
+            });
+
+            // Efecto hover para las filas
+            const rows = document.querySelectorAll('.cyber-table tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.querySelectorAll('td').forEach(td => {
+                        td.style.transition = 'all 0.3s ease';
+                    });
+                });
+            });
+        });
+    </script>
+}

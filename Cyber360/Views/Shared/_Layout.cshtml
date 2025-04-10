@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CyberCafé La Réd</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Cyber360.styles.css" asp-append-version="true" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --cyber-blue: #0066cc;
+            --cyber-dark: #111;
+            --cyber-gray: #333;
+            --cyber-light: #ddd;
+            --cyber-accent: #ff6600;
+            --cr-screen: #c0ffc0;
+        }
+
+        body {
+            background-color: var(--cyber-dark);
+            color: var(--cyber-light);
+            font-family: 'Courier New', monospace;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar estilo cyber */
+        .sidebar {
+            width: 250px;
+            background-color: var(--cyber-gray);
+            border-right: 1px solid var(--cyber-blue);
+            padding: 20px 0;
+        }
+
+            .sidebar .nav-link {
+                color: var(--cyber-light);
+                padding: 10px 20px;
+                border-radius: 0;
+                border-left: 3px solid transparent;
+            }
+
+                .sidebar .nav-link:hover {
+                    background-color: var(--cyber-dark);
+                    color: var(--cr-screen);
+                    border-left: 3px solid var(--cyber-accent);
+                }
+
+                .sidebar .nav-link.active {
+                    background-color: var(--cyber-blue);
+                    color: white;
+                    border-left: 3px solid var(--cyber-accent);
+                }
+
+            .sidebar .dropdown-menu {
+                background-color: var(--cyber-gray);
+                border: 1px solid var(--cyber-blue);
+                border-radius: 0;
+                padding: 0;
+                margin-left: 15px;
+            }
+
+            .sidebar .dropdown-item {
+                padding: 8px 20px;
+                color: var(--cyber-light);
+                border-left: 3px solid transparent;
+            }
+
+                .sidebar .dropdown-item:hover {
+                    background-color: var(--cyber-dark);
+                    color: var(--cr-screen);
+                    border-left: 3px solid var(--cyber-accent);
+                }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--cyber-dark);
+        }
+
+        /* Navbar estilo cyber */
+        .navbar {
+            background-color: var(--cyber-gray) !important;
+            border-bottom: 2px solid var(--cyber-blue);
+        }
+
+        .navbar-brand {
+            color: var(--cyber-accent) !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-toggler {
+            border-color: var(--cyber-blue);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 102, 204, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Footer estilo cyber */
+        .footer {
+            background-color: var(--cyber-gray);
+            color: var(--cyber-accent);
+            border-top: 2px solid var(--cyber-blue);
+            padding: 10px 0;
+            font-size: 0.8rem;
+        }
+
+            .footer a {
+                color: var(--cyber-accent);
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    color: var(--cr-screen);
+                    text-shadow: 0 0 5px var(--cr-screen);
+                }
+
+        /* Efectos cyber */
+        .cr-effect {
+            color: var(--cr-screen);
+            text-shadow: 0 0 5px var(--cr-screen);
+        }
+
+        .pixel-border {
+            border: 2px solid var(--cyber-blue);
+            position: relative;
+        }
+
+            .pixel-border:before {
+                content: "";
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                right: -5px;
+                bottom: -5px;
+                border: 1px solid var(--cyber-accent);
+                pointer-events: none;
+            }
+
+        .status-light {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-on {
+            background-color: #00ff00;
+            box-shadow: 0 0 5px #00ff00;
+        }
+
+        @@media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .main-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-desktop"></i> CYBERCAFÉ LA RÉD
+                </a>
+                <div class="text-white me-3">
+                    <span class="status-light status-on"></span>
+                    <small>En línea</small>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <!-- Menú lateral izquierdo -->
+        <div class="sidebar">
+            <ul class="nav flex-column">
+                <!-- Configuración -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="configDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-cog me-2"></i>Clientes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="configDropdown">
+                        <li><a class="dropdown-item" asp-controller="Clientes" asp-action="Index"><i class="fas fa-users me-2"></i>Clientes</a></li>
+                    </ul>
+                </li>
+
+                <!-- Compras -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="comprasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-shopping-cart me-2"></i>Compras
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="comprasDropdown">
+                        <li><a class="dropdown-item" asp-controller="Compras" asp-action="Index"><i class="fas fa-list me-2"></i>Compras</a></li>
+                        <li><a class="dropdown-item" asp-controller="Proveedores" asp-action="Index"><i class="fas fa-truck me-2"></i>Proveedor</a></li>
+                        <li><a class="dropdown-item" asp-controller="Productoes" asp-action="Index"><i class="fas fa-truck me-2"></i>Productos</a></li>
+
+                        <li><a class="dropdown-item" asp-controller="CatProducts" asp-action="Index"><i class="fas fa-tags me-2"></i>Categorías de productos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Servicios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-concierge-bell me-2"></i>Servicios
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                        <li><a class="dropdown-item" asp-controller="Servicios" asp-action="Index"><i class="fas fa-list me-2"></i>Servicios</a></li>
+                        <li><a class="dropdown-item" asp-controller="CatServis" asp-action="Index"><i class="fas fa-tags me-2"></i>Categoría de servicios</a></li>
+                    </ul>
+                </li>
+
+                <!-- Ventas -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ventasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-cash-register me-2"></i>Ventas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="ventasDropdown">
+                        <li><a class="dropdown-item" asp-controller="Ventas" asp-action="Index"><i class="fas fa-receipt me-2"></i>Ventas</a></li>
+                    </ul>
+                </li>
+
+               
+            </ul>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="content">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <span class="cr-effect">F1-Ayuda</span> |
+                    <span class="cr-effect">F5-Actualizar</span>
+                </div>
+                <div>
+                    <span class="cr-effect">© @DateTime.Now.Year - CyberCafé La Réd</span> -
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Efecto de terminal parpadeante
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.createElement('span');
+            cursor.className = 'cr-effect';
+            cursor.innerHTML = '█';
+            cursor.style.animation = 'blink 1s infinite';
+
+            const footer = document.querySelector('.footer');
+            footer.appendChild(cursor);
+
+            // Efecto hover para items del menú
+            const navItems = document.querySelectorAll('.nav-link, .dropdown-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.classList.add('cr-effect');
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.classList.remove('cr-effect');
+                });
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

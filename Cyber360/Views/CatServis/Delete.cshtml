@@ -1,0 +1,191 @@
+﻿@model Cyber360.Models.CatServi
+
+@{
+    ViewData["Title"] = "Eliminar Categoría";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-dark);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 0;
+        font-family: 'Courier New', monospace;
+    }
+
+    .cyber-alert-danger {
+        background-color: #330000;
+        border-color: #ff0000;
+        color: #ff6666;
+    }
+
+    .cyber-alert-success {
+        background-color: #003300;
+        border-color: #00ff00;
+        color: #66ff66;
+    }
+
+    .cyber-dl {
+        margin: 20px 0;
+    }
+
+    .cyber-dt {
+        color: var(--cyber-blue);
+        padding: 8px 0;
+    }
+
+    .cyber-dd {
+        color: var(--cyber-light);
+        padding: 8px 0;
+        border-bottom: 1px dotted var(--cyber-gray);
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 5px 0;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-danger {
+        background-color: #cc0000;
+        color: white;
+    }
+
+        .cyber-btn-danger:hover {
+            background-color: #990000;
+            box-shadow: 0 0 10px #ff0000;
+        }
+
+    .cyber-btn-secondary {
+        background-color: var(--cyber-gray);
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: var(--cyber-dark);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, var(--cyber-blue), transparent);
+        margin: 20px 0;
+    }
+
+    .cyber-text-warning {
+        color: var(--cyber-accent);
+        font-weight: bold;
+    }
+
+    .cyber-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+</style>
+
+<div class="cyber-container">
+    <div class="cyber-header">
+        <i class="fas fa-trash-alt"></i> ELIMINAR CATEGORÍA
+    </div>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="cyber-alert cyber-alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> @ViewBag.ErrorMessage
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="cyber-alert cyber-alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="cyber-alert cyber-alert-success">
+            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="cyber-text-warning">
+        <i class="fas fa-question-circle"></i> ¿ESTÁS SEGURO QUE QUIERES ELIMINAR ESTA CATEGORÍA?
+    </div>
+
+    <div class="cyber-dl row">
+        <dt class="cyber-dt col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre):
+        </dt>
+        <dd class="cyber-dd col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+    </div>
+
+    <div class="cyber-hr"></div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="cyber-btn cyber-btn-danger" @(ViewBag.ErrorMessage != null ? "disabled" : "")>
+            <i class="fas fa-skull-crossbones"></i> CONFIRMAR ELIMINACIÓN
+        </button>
+        <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+            <i class="fas fa-arrow-left"></i> REGRESAR AL LISTADO
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de parpadeo para mensajes de error
+            const dangerAlerts = document.querySelectorAll('.cyber-alert-danger');
+            dangerAlerts.forEach(alert => {
+                let opacity = 1;
+                setInterval(() => {
+                    opacity = opacity === 1 ? 0.7 : 1;
+                    alert.style.opacity = opacity;
+                }, 1000);
+            });
+        });
+    </script>
+}

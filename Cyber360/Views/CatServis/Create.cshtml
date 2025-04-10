@@ -1,0 +1,260 @@
+﻿@model Cyber360.Models.CatServi
+
+@{
+    ViewData["Title"] = "Nueva Categoría de Servicios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cyber-service: #9933ff;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%239933ff"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 600px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-service);
+        padding: 25px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(153, 51, 255, 0.3);
+        position: relative;
+    }
+
+    .cyber-header {
+        color: var(--cyber-service);
+        border-bottom: 2px dashed var(--cyber-service);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cyber-form-group {
+        margin-bottom: 25px;
+    }
+
+    .cyber-label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--cyber-service);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .cyber-input {
+        width: 100%;
+        padding: 12px 15px;
+        background-color: var(--cyber-dark);
+        border: 1px solid var(--cyber-service);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+            background-color: #1a1a1a;
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .cyber-btn-service {
+        background-color: var(--cyber-service);
+        color: white;
+    }
+
+        .cyber-btn-service:hover {
+            background-color: #7a29cc;
+            box-shadow: 0 0 15px var(--cyber-service);
+            transform: translateY(-2px);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-service);
+        border: 1px solid var(--cyber-service);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(153, 51, 255, 0.2);
+            box-shadow: 0 0 10px rgba(153, 51, 255, 0.3);
+        }
+
+    .text-danger {
+        color: #ff6666;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: block;
+        text-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+    }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid var(--cyber-accent);
+        pointer-events: none;
+    }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        background-color: var(--cyber-service);
+        box-shadow: 0 0 5px var(--cyber-service);
+        animation: pulse 1.5s infinite;
+    }
+
+    .cyber-footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px dashed var(--cyber-service);
+        color: var(--cyber-service);
+        font-size: 0.9rem;
+    }
+
+    @@keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="cyber-header">
+        <div>
+            <i class="fas fa-server"></i> NUEVA CATEGORÍA DE SERVICIOS
+        </div>
+        <div class="text-right">
+            <span class="status-light"></span>
+            <small class="cr-effect">Modo Creación</small>
+        </div>
+    </div>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="cyber-form-group">
+            <label asp-for="Nombre" class="cyber-label">
+                <i class="fas fa-tag"></i> NOMBRE DE CATEGORÍA
+            </label>
+            <input asp-for="Nombre" class="cyber-input" required
+                   placeholder="Ingrese el nombre de la categoría de servicios" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="Index" class="cyber-btn cyber-btn-outline">
+                <i class="fas fa-arrow-left"></i> CANCELAR
+            </a>
+            <button type="submit" class="cyber-btn cyber-btn-service">
+                <i class="fas fa-save"></i> CREAR CATEGORÍA
+            </button>
+        </div>
+    </form>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+            </div>
+            <div>
+                <span class="cr-effect">Cyber360 v2.1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de máquina de escribir para el título
+            const title = document.querySelector('.cyber-header');
+            if (title) {
+                const originalText = title.textContent;
+                title.textContent = '';
+
+                let i = 0;
+                const typeWriter = setInterval(() => {
+                    if (i < originalText.length) {
+                        title.textContent += originalText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeWriter);
+                    }
+                }, 50);
+            }
+
+            // Efecto de cursor en el input
+            const input = document.querySelector('.cyber-input');
+            if (input) {
+                input.addEventListener('focus', function() {
+                    this.style.boxShadow = '0 0 20px rgba(153, 51, 255, 0.7)';
+                    this.style.backgroundColor = '#1a1a1a';
+                });
+
+                input.addEventListener('blur', function() {
+                    this.style.boxShadow = 'none';
+                    this.style.backgroundColor = 'var(--cyber-dark)';
+                });
+            }
+        });
+    </script>
+}

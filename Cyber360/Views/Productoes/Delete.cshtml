@@ -1,0 +1,226 @@
+﻿@model Cyber360.Models.Producto
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cyber-danger: #cc0000;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-danger);
+        padding: 20px;
+        background-color: var(--cyber-dark);
+        box-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-danger);
+        border-bottom: 2px dashed var(--cyber-danger);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .cyber-alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 0;
+        font-family: 'Courier New', monospace;
+    }
+
+    .cyber-alert-danger {
+        background-color: #330000;
+        border-color: var(--cyber-danger);
+        color: #ff6666;
+        text-shadow: 0 0 5px #ff0000;
+    }
+
+    .cyber-alert-success {
+        background-color: #003300;
+        border-color: #00ff00;
+        color: #66ff66;
+    }
+
+    .cyber-dl {
+        margin: 20px 0;
+    }
+
+    .cyber-dt {
+        color: var(--cyber-blue);
+        padding: 8px 0;
+        text-transform: uppercase;
+    }
+
+    .cyber-dd {
+        color: var(--cyber-light);
+        padding: 8px 0;
+        border-bottom: 1px dotted var(--cyber-gray);
+        font-family: 'Courier New', monospace;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 5px 10px 0;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-danger {
+        background-color: var(--cyber-danger);
+        color: white;
+    }
+
+        .cyber-btn-danger:hover {
+            background-color: #990000;
+            box-shadow: 0 0 15px var(--cyber-danger);
+        }
+
+    .cyber-btn-secondary {
+        background-color: var(--cyber-gray);
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: var(--cyber-dark);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-warning-text {
+        color: var(--cyber-danger);
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 20px 0;
+        text-transform: uppercase;
+    }
+
+    .cyber-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, var(--cyber-danger), transparent);
+        margin: 20px 0;
+    }
+
+    .cyber-price {
+        color: var(--cyber-accent);
+        font-weight: bold;
+    }
+
+    .cyber-quantity {
+        color: var(--cr-screen);
+    }
+</style>
+
+<div class="cyber-container">
+    <div class="cyber-header">
+        <i class="fas fa-exclamation-triangle"></i> ELIMINAR PRODUCTO
+    </div>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="cyber-alert cyber-alert-danger">
+            <i class="fas fa-skull-crossbones"></i> @ViewBag.ErrorMessage
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="cyber-alert cyber-alert-danger">
+            <i class="fas fa-skull-crossbones"></i> @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="cyber-alert cyber-alert-success">
+            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="cyber-warning-text">
+        <i class="fas fa-radiation"></i> ADVERTENCIA: ESTA ACCIÓN NO SE PUEDE DESHACER
+    </div>
+
+    <div class="cyber-dl row">
+        <dt class="cyber-dt col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre):
+        </dt>
+        <dd class="cyber-dd col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt class="cyber-dt col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio):
+        </dt>
+        <dd class="cyber-dd col-sm-10 cyber-price">
+            $@Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt class="cyber-dt col-sm-2">
+            @Html.DisplayNameFor(model => model.Cantidad):
+        </dt>
+        <dd class="cyber-dd col-sm-10 cyber-quantity">
+            @Html.DisplayFor(model => model.Cantidad) unidades
+        </dd>
+    </div>
+
+    <div class="cyber-hr"></div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="cyber-btn cyber-btn-danger" @(ViewBag.ErrorMessage != null ? "disabled" : "")>
+            <i class="fas fa-trash-alt"></i> CONFIRMAR ELIMINACIÓN
+        </button>
+        <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+            <i class="fas fa-arrow-left"></i> CANCELAR
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de parpadeo en el encabezado
+            const header = document.querySelector('.cyber-header');
+            let intensity = 1;
+            setInterval(() => {
+                intensity = intensity === 1 ? 0.7 : 1;
+                header.style.opacity = intensity;
+            }, 800);
+
+            // Efecto en el botón de eliminar
+            const deleteBtn = document.querySelector('.cyber-btn-danger');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('mouseover', function() {
+                    this.style.boxShadow = '0 0 20px var(--cyber-danger)';
+                });
+                deleteBtn.addEventListener('mouseout', function() {
+                    this.style.boxShadow = 'none';
+                });
+            }
+        });
+    </script>
+}

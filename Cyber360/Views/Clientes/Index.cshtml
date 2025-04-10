@@ -1,0 +1,237 @@
+﻿@model IEnumerable<Cyber360.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+        position: relative;
+    }
+
+    .cyber-container:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid var(--cyber-accent);
+        pointer-events: none;
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+    }
+
+        .cyber-table th {
+            background-color: var(--cyber-blue);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--cyber-dark);
+        }
+
+        .cyber-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--cyber-gray);
+            background-color: var(--cyber-dark);
+        }
+
+        .cyber-table tr:nth-child(even) td {
+            background-color: #222;
+        }
+
+        .cyber-table tr:hover td {
+            background-color: #1a1a1a;
+            color: var(--cr-screen);
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 8px 15px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+
+    .cyber-btn-danger {
+        background-color: #ff4444;
+        color: white;
+    }
+
+        .cyber-btn-danger:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 10px #ff4444;
+        }
+
+    .action-cell {
+        display: flex;
+        gap: 5px;
+    }
+
+    .cyber-footer {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.8rem;
+    }
+
+    .create-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background-color: var(--cyber-accent);
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 3px;
+        transition: all 0.3s;
+    }
+
+        .create-link:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 10px var(--cyber-accent);
+            color: black;
+        }
+
+    .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+        margin-right: 10px;
+    }
+</style>
+
+<div class="cyber-container">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="cyber-header">
+            <i class="fas fa-users"></i> REGISTRO DE CLIENTES
+        </h1>
+        <div class="text-right">
+            <span class="status-indicator"></span>
+            <small>Base de datos activa</small>
+        </div>
+    </div>
+
+    <a asp-action="Create" class="create-link">
+        <i class="fas fa-user-plus"></i> NUEVO CLIENTE
+    </a>
+
+    <table class="cyber-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                <th>@Html.DisplayNameFor(model => model.Apellido)</th>
+                <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                <th>@Html.DisplayNameFor(model => model.Documento)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="cr-effect">@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Documento)</td>
+                    <td>
+                        <div class="action-cell">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="cyber-btn cyber-btn-outline" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="cyber-btn cyber-btn-outline" title="Detalles">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="cyber-btn cyber-btn-danger" title="Eliminar">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">Total clientes: @Model.Count()</span>
+            </div>
+            <div>
+                <span class="cr-effect">© @DateTime.Now.Year CyberCafé System</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

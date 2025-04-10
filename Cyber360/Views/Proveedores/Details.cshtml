@@ -1,0 +1,133 @@
+﻿@model Cyber360.Models.Proveedore
+
+@{
+    ViewData["Title"] = "Detalles del Proveedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-details {
+        background-color: var(--cyber-dark);
+        padding: 20px;
+        border: 1px solid var(--cyber-blue);
+    }
+
+    .cyber-detail-row {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px dotted var(--cyber-blue);
+        padding-bottom: 10px;
+    }
+
+    .cyber-detail-label {
+        flex: 1;
+        color: var(--cyber-accent);
+        font-weight: bold;
+    }
+
+    .cyber-detail-value {
+        flex: 2;
+        color: var(--cyber-light);
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 8px 15px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+
+    .cyber-btn-accent {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+        .cyber-btn-accent:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 10px var(--cyber-accent);
+        }
+</style>
+
+<div class="cyber-container">
+    <h1 class="cyber-header">
+        <i class="fas fa-id-card"></i> DETALLES DEL PROVEEDOR
+    </h1>
+
+    <div class="cyber-details">
+        <div class="cyber-detail-row">
+            <div class="cyber-detail-label">NOMBRE:</div>
+            <div class="cyber-detail-value cr-effect">@Html.DisplayFor(model => model.Nombre)</div>
+        </div>
+
+        <div class="cyber-detail-row">
+            <div class="cyber-detail-label">CORREO:</div>
+            <div class="cyber-detail-value">@Html.DisplayFor(model => model.Correo)</div>
+        </div>
+
+        <div class="cyber-detail-row">
+            <div class="cyber-detail-label">EMPRESA:</div>
+            <div class="cyber-detail-value">@Html.DisplayFor(model => model.NombredeEmpresa)</div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="cyber-btn cyber-btn-outline">
+            <i class="fas fa-edit"></i> EDITAR
+        </a>
+        <a asp-action="Index" class="cyber-btn cyber-btn-accent">
+            <i class="fas fa-arrow-left"></i> VOLVER
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .cr-effect {
+            color: var(--cr-screen);
+            text-shadow: 0 0 5px var(--cr-screen);
+        }
+    </style>
+}

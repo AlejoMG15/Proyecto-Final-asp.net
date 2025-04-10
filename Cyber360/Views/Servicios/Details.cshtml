@@ -1,0 +1,191 @@
+﻿@model Cyber360.Models.Servicio
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-details-container {
+        max-width: 700px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 25px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+        position: relative;
+    }
+
+        .cyber-details-container:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .cyber-details-title {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-dl {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .cyber-dt {
+        color: var(--cyber-light);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .cyber-dd {
+        color: var(--cr-screen);
+        margin: 0;
+        padding: 5px 0;
+        border-bottom: 1px dotted var(--cyber-blue);
+    }
+
+    .cyber-actions {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--cyber-blue);
+        display: flex;
+        gap: 15px;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-secondary {
+        background-color: transparent;
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-light);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--cr-screen);
+            border-color: var(--cr-screen);
+        }
+
+    .data-header {
+        color: var(--cyber-accent);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+        margin-right: 10px;
+        animation: pulse 2s infinite;
+    }
+
+    @@keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.6;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="cyber-details-container">
+    <h1 class="cyber-details-title">
+        <i class="fas fa-file-alt"></i> DETALLES DEL SERVICIO
+    </h1>
+
+    <div>
+        <h4 class="data-header">
+            <span class="status-indicator"></span>
+            INFORMACIÓN DEL SERVICIO
+        </h4>
+
+        <dl class="cyber-dl">
+            <dt class="cyber-dt">
+                <i class="fas fa-tag"></i> @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt class="cyber-dt">
+                <i class="fas fa-dollar-sign"></i> @Html.DisplayNameFor(model => model.Precio)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Precio)
+            </dd>
+
+            <dt class="cyber-dt">
+                <i class="fas fa-info-circle"></i> @Html.DisplayNameFor(model => model.Detalles)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Detalles)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="cyber-actions">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="cyber-btn cyber-btn-primary">
+            <i class="fas fa-edit"></i> EDITAR
+        </a>
+        <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+            <i class="fas fa-list"></i> VOLVER AL LISTADO
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

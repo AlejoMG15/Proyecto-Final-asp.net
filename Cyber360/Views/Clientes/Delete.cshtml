@@ -1,0 +1,330 @@
+﻿@model Cyber360.Models.Cliente
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-red: #ff3366;
+        --cyber-dark: #111;
+        --cyber-gray: #222;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-delete-container {
+        max-width: 700px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-red);
+        padding: 25px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 25px rgba(255, 51, 102, 0.4);
+        position: relative;
+        animation: glitch-bg 2s infinite alternate;
+    }
+
+        .cyber-delete-container:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+            animation: glitch 3s infinite;
+        }
+
+    .cyber-delete-title {
+        color: var(--cyber-red);
+        border-bottom: 2px dashed var(--cyber-red);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px var(--cyber-red);
+        font-family: 'Courier New', monospace;
+        position: relative;
+    }
+
+        .cyber-delete-title:after {
+            content: "ELIMINAR CLIENTE";
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            color: var(--cr-screen);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+    .cyber-delete-warning {
+        color: var(--cyber-red);
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        padding: 15px;
+        background-color: rgba(255, 51, 102, 0.1);
+        border-left: 4px solid var(--cyber-red);
+        display: flex;
+        align-items: center;
+        animation: pulse-red 1.5s infinite;
+    }
+
+    .cyber-dl {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .cyber-dt {
+        color: var(--cyber-light);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .cyber-dd {
+        color: var(--cr-screen);
+        margin: 0;
+        padding: 5px 0;
+        border-bottom: 1px dotted var(--cyber-red);
+    }
+
+    .cyber-form-actions {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--cyber-red);
+        display: flex;
+        gap: 15px;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .cyber-btn-danger {
+        background-color: var(--cyber-red);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .cyber-btn-danger:hover {
+            background-color: #cc0033;
+            box-shadow: 0 0 20px var(--cyber-red);
+            animation: btn-pulse 0.5s infinite alternate;
+        }
+
+    .cyber-btn-secondary {
+        background-color: transparent;
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-light);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--cr-screen);
+            border-color: var(--cr-screen);
+        }
+
+    .warning-icon {
+        margin-right: 10px;
+        font-size: 1.5rem;
+        animation: shake 0.5s infinite alternate;
+    }
+
+    /* Animaciones */
+    @@keyframes pulse-red {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.7;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @@keyframes btn-pulse {
+        to {
+            transform: scale(1.05);
+        }
+    }
+
+    @@keyframes shake {
+        0% {
+            transform: rotate(-5deg);
+        }
+
+        100% {
+            transform: rotate(5deg);
+        }
+    }
+
+    @@keyframes glitch {
+        0% {
+            clip: rect(0px, 0px, 0px, 0px);
+        }
+
+        5% {
+            clip: rect(0px, 9999px, 5px, 0px);
+        }
+
+        10% {
+            clip: rect(0px, 9999px, 15px, 0px);
+        }
+
+        15% {
+            clip: rect(0px, 9999px, 2px, 0px);
+        }
+
+        20% {
+            clip: rect(0px, 9999px, 10px, 0px);
+        }
+
+        25% {
+            clip: rect(0px, 9999px, 8px, 0px);
+        }
+
+        30% {
+            clip: rect(0px, 9999px, 12px, 0px);
+        }
+
+        35% {
+            clip: rect(0px, 9999px, 3px, 0px);
+        }
+
+        100% {
+            clip: rect(0px, 9999px, 0px, 0px);
+        }
+    }
+
+    @@keyframes glitch-bg {
+        0% {
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.4);
+        }
+
+        50% {
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.6);
+        }
+
+        100% {
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.4);
+        }
+    }
+</style>
+
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="cyber-delete-container">
+    <h1 class="cyber-delete-title">
+        <i class="fas fa-user-slash"></i> ELIMINAR CLIENTE
+    </h1>
+
+    <div class="cyber-delete-warning">
+        <i class="fas fa-radiation warning-icon"></i>
+        ¡ADVERTENCIA! Esta acción es irreversible y eliminará permanentemente los datos.
+    </div>
+
+    <div>
+        <h4 style="color: var(--cyber-accent); margin-bottom: 20px;">
+            <i class="fas fa-id-card"></i> DATOS DEL CLIENTE
+        </h4>
+
+        <dl class="cyber-dl">
+            <dt class="cyber-dt">
+                <i class="fas fa-signature"></i> @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt class="cyber-dt">
+                <i class="fas fa-signature"></i> @Html.DisplayNameFor(model => model.Apellido)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Apellido)
+            </dd>
+
+            <dt class="cyber-dt">
+                <i class="fas fa-phone-alt"></i> @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+
+            <dt class="cyber-dt">
+                <i class="fas fa-id-card-alt"></i> @Html.DisplayNameFor(model => model.Documento)
+            </dt>
+            <dd class="cyber-dd">
+                @Html.DisplayFor(model => model.Documento)
+            </dd>
+        </dl>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="cyber-form-actions">
+            <button type="submit" class="cyber-btn cyber-btn-danger">
+                <i class="fas fa-trash"></i> CONFIRMAR ELIMINACIÓN
+            </button>
+            <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+                <i class="fas fa-ban"></i> CANCELAR
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        // Efecto adicional para el botón de eliminar
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteBtn = document.querySelector('.cyber-btn-danger');
+
+            setInterval(() => {
+                deleteBtn.style.boxShadow = deleteBtn.style.boxShadow ?
+                    'none' :
+                    '0 0 15px var(--cyber-red)';
+            }, 800);
+        });
+    </script>
+}

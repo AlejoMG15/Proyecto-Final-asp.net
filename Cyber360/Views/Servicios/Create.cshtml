@@ -1,0 +1,211 @@
+﻿@model Cyber360.Models.Servicio
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+        --input-bg: #222;
+    }
+
+    .cyber-form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 25px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+        position: relative;
+    }
+
+        .cyber-form-container:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .cyber-form-title {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-form-group {
+        margin-bottom: 20px;
+    }
+
+    .cyber-label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--cyber-light);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .cyber-input {
+        width: 100%;
+        padding: 10px 15px;
+        background-color: var(--input-bg);
+        border: 1px solid var(--cyber-blue);
+        color: var(--cr-screen);
+        font-family: 'Courier New', monospace;
+        transition: all 0.3s;
+    }
+
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-validation {
+        color: #ff4444;
+        font-size: 0.8rem;
+        margin-top: 5px;
+        text-shadow: 0 0 3px #ff0000;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-secondary {
+        background-color: transparent;
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-light);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--cr-screen);
+        }
+
+    .cyber-link {
+        color: var(--cyber-accent);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--cyber-accent);
+        transition: all 0.3s;
+    }
+
+        .cyber-link:hover {
+            color: var(--cr-screen);
+            text-decoration: none;
+            border-bottom-color: var(--cr-screen);
+        }
+
+    .form-actions {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed var(--cyber-blue);
+    }
+</style>
+
+<div class="cyber-form-container">
+    <h1 class="cyber-form-title">
+        <i class="fas fa-plus-circle"></i> Crear Nuevo Servicio
+    </h1>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="cyber-validation"></div>
+
+        <div class="cyber-form-group">
+            <label asp-for="Nombre" class="cyber-label">
+                <i class="fas fa-tag"></i> @Html.DisplayNameFor(model => model.Nombre)
+            </label>
+            <input asp-for="Nombre" class="cyber-input" placeholder="INGRESE NOMBRE DEL SERVICIO" />
+            <span asp-validation-for="Nombre" class="cyber-validation"></span>
+        </div>
+
+        <div class="cyber-form-group">
+            <label asp-for="Precio" class="cyber-label">
+                <i class="fas fa-dollar-sign"></i> @Html.DisplayNameFor(model => model.Precio)
+            </label>
+            <input asp-for="Precio" class="cyber-input" placeholder="0.00" />
+            <span asp-validation-for="Precio" class="cyber-validation"></span>
+        </div>
+
+        <div class="cyber-form-group">
+            <label asp-for="Detalles" class="cyber-label">
+                <i class="fas fa-info-circle"></i> @Html.DisplayNameFor(model => model.Detalles)
+            </label>
+            <input asp-for="Detalles" class="cyber-input" placeholder="DESCRIPCIÓN DEL SERVICIO" />
+            <span asp-validation-for="Detalles" class="cyber-validation"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CategoriaId" class="control-label">Category</label>
+            <select asp-for="CategoriaId" class="form-control"
+                    asp-items="ViewBag.Categorias">
+                <option value="">-- Select Category --</option>
+            </select>
+            <span asp-validation-for="CategoriaId" class="text-danger"></span>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="cyber-btn cyber-btn-primary">
+                <i class="fas fa-save"></i> CREAR SERVICIO
+            </button>
+            <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+                <i class="fas fa-arrow-left"></i> VOLVER AL LISTADO
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        // Efecto de foco en los inputs
+        document.querySelectorAll('.cyber-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.boxShadow = '0 0 15px rgba(0, 102, 204, 0.7)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+}

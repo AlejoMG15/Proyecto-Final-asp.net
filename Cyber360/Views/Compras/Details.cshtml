@@ -1,0 +1,229 @@
+﻿@model Cyber360.Models.Compra
+
+@{
+    ViewData["Title"] = "Detalles de Compra - CyberCafé";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-details {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .detail-label {
+        color: var(--cyber-accent);
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .detail-value {
+        color: var(--cr-screen);
+        padding: 5px 0;
+        border-bottom: 1px dotted var(--cyber-blue);
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-accent {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+        .cyber-btn-accent:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 10px var(--cyber-accent);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border {
+        border: 2px solid var(--cyber-blue);
+        position: relative;
+    }
+
+        .pixel-border:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+
+    .status-on {
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+    }
+
+    .cyber-footer {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.8rem;
+    }
+
+    .action-buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="cyber-header">
+            <i class="fas fa-file-alt"></i> DETALLES DE COMPRA
+        </h1>
+        <div class="text-right">
+            <span class="cr-effect">Sistema de Compras v1.0</span><br>
+            <span class="status-light status-on"></span>
+            <small>En línea</small>
+        </div>
+    </div>
+
+    <div class="cyber-details">
+        <div class="detail-label">@Html.DisplayNameFor(model => model.Cantidad)</div>
+        <div class="detail-value">@Html.DisplayFor(model => model.Cantidad)</div>
+
+        <div class="detail-label">@Html.DisplayNameFor(model => model.Total)</div>
+        <div class="detail-value">$@Html.DisplayFor(model => model.Total)</div>
+
+        <div class="detail-label">@Html.DisplayNameFor(model => model.Fecha)</div>
+        <div class="detail-value">@Model.Fecha</div>
+
+        <div class="detail-label">@Html.DisplayNameFor(model => model.Proveedor)</div>
+        <div class="detail-value">
+            <span class="status-light status-on"></span>
+            @Html.DisplayFor(model => model.Proveedor.Nombre) (ID: @Html.DisplayFor(model => model.Proveedor.Id))
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="cyber-btn cyber-btn-accent">
+            <i class="fas fa-edit"></i> EDITAR
+        </a>
+        <a asp-action="Index" class="cyber-btn cyber-btn-outline">
+            <i class="fas fa-list"></i> VOLVER AL LISTADO
+        </a>
+    </div>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">F1-Ayuda</span> |
+                <span class="cr-effect">F5-Actualizar</span>
+            </div>
+            <div>
+                <span class="cr-effect">© 2023 CyberCafé La Réd</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de máquina de escribir para la fecha
+            const dateElement = document.querySelector('.cr-effect');
+            let dateText = dateElement.textContent;
+            dateElement.textContent = '';
+
+            let i = 0;
+            const typeWriter = setInterval(() => {
+                if (i < dateText.length) {
+                    dateElement.textContent += dateText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeWriter);
+                }
+            }, 100);
+        });
+    </script>
+}

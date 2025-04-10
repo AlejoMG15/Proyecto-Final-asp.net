@@ -1,0 +1,154 @@
+﻿@model Cyber360.Models.CatServi
+
+@{
+    ViewData["Title"] = "Detalles de Categoría";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-dark);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-details {
+        margin: 20px 0;
+    }
+
+    .cyber-dt {
+        color: var(--cyber-blue);
+        padding: 10px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .cyber-dd {
+        color: var(--cyber-light);
+        padding: 10px 0;
+        border-bottom: 1px dotted var(--cyber-gray);
+        font-family: 'Courier New', monospace;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 5px 10px 0;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-secondary {
+        background-color: var(--cyber-gray);
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: var(--cyber-dark);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, var(--cyber-blue), transparent);
+        margin: 20px 0;
+    }
+
+    .cyber-id-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: var(--cyber-gray);
+        color: var(--cyber-accent);
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+        border: 1px solid var(--cyber-blue);
+    }
+</style>
+
+<div class="cyber-container">
+    <div class="cyber-header">
+        <i class="fas fa-info-circle"></i> DETALLES DE CATEGORÍA
+    </div>
+
+    <div class="cyber-details">
+        <dl class="row">
+            <dt class="cyber-dt col-sm-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="cyber-dd col-sm-10">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="cyber-hr"></div>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="cyber-btn cyber-btn-primary">
+            <i class="fas fa-edit"></i> EDITAR
+        </a>
+        <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+            <i class="fas fa-arrow-left"></i> REGRESAR
+        </a>
+    </div>
+
+    <div style="margin-top: 30px; text-align: right;">
+        <span class="cyber-id-badge">
+            <i class="fas fa-hashtag"></i> ID: @Model?.Id
+        </span>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de parpadeo en el encabezado
+            const header = document.querySelector('.cyber-header');
+            let intensity = 1;
+            setInterval(() => {
+                intensity = intensity === 1 ? 0.8 : 1;
+                header.style.textShadow = `0 0 ${5*intensity}px var(--cyber-accent)`;
+            }, 1000);
+        });
+    </script>
+}

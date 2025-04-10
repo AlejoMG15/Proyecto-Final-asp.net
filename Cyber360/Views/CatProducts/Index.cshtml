@@ -1,0 +1,289 @@
+﻿@model IEnumerable<Cyber360.Models.viewModel.CategoriaConConteoViewModel>
+
+@{
+    ViewData["Title"] = "Gestión de Categorías";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+    }
+
+        .cyber-table th {
+            background-color: var(--cyber-blue);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--cyber-dark);
+        }
+
+        .cyber-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--cyber-gray);
+            background-color: var(--cyber-dark);
+        }
+
+        .cyber-table tr:nth-child(even) td {
+            background-color: #222;
+        }
+
+        .cyber-table tr:hover td {
+            background-color: #1a1a1a;
+            color: var(--cr-screen);
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 2px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+
+    .cyber-btn-accent {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+        .cyber-btn-accent:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 10px var(--cyber-accent);
+        }
+
+    .cyber-btn-success {
+        background-color: #00aa00;
+        color: white;
+    }
+
+        .cyber-btn-success:hover {
+            background-color: #008800;
+            box-shadow: 0 0 10px #00aa00;
+        }
+
+    .status-light {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    .status-on {
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+    }
+
+    .status-warning {
+        background-color: #ffcc00;
+        box-shadow: 0 0 5px #ffcc00;
+    }
+
+    .status-danger {
+        background-color: #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+    }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .count-high {
+        color: #66ff66;
+        font-weight: bold;
+    }
+
+    .count-low {
+        color: #ffcc00;
+    }
+
+    .count-zero {
+        color: #ff6666;
+    }
+
+    .pixel-border {
+        position: relative;
+    }
+
+        .pixel-border:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .action-cell {
+        display: flex;
+        gap: 5px;
+    }
+
+    .cyber-footer {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.8rem;
+    }
+
+    .category-badge {
+        display: inline-flex;
+        align-items: center;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="cyber-header">
+        <div>
+            <i class="fas fa-folder-tree"></i> CATEGORÍAS DE PRODUCTOS
+        </div>
+        <div class="cr-effect">
+            @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-action="Create" class="cyber-btn cyber-btn-success">
+            <i class="fas fa-plus-circle"></i> NUEVA CATEGORÍA
+        </a>
+        <div class="cr-effect">
+            Total: @Model.Count() categorías
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-tag"></i> CATEGORÍA</th>
+                    <th><i class="fas fa-boxes"></i> PRODUCTOS</th>
+                    <th><i class="fas fa-cogs"></i> ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="category-badge">
+                                <span class="status-light @(item.TotalProductos > 5 ? "status-on" : item.TotalProductos > 0 ? "status-warning" : "status-danger")"></span>
+                                @item.Categoria.Nombre
+                            </div>
+                        </td>
+                        <td class="@(item.TotalProductos > 5 ? "count-high" : item.TotalProductos > 0 ? "count-low" : "count-zero")">
+                            @item.TotalProductos productos
+                        </td>
+                        <td>
+                            <div class="action-cell">
+                                <a asp-action="Edit" asp-route-id="@item.Categoria.Id" class="cyber-btn cyber-btn-outline" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Categoria.Id" class="cyber-btn cyber-btn-outline" title="Detalles">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Categoria.Id" class="cyber-btn cyber-btn-accent" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">F1-Ayuda</span> |
+                <span class="cr-effect">F5-Actualizar</span> |
+                <span class="cr-effect">F9-Reporte</span>
+            </div>
+            <div>
+                <span class="cr-effect">© @DateTime.Now.Year Cyber360</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de parpadeo para categorías con pocos productos
+            const warningLights = document.querySelectorAll('.status-warning, .status-danger');
+            warningLights.forEach(light => {
+                setInterval(() => {
+                    light.style.opacity = light.style.opacity === '0.5' ? '1' : '0.5';
+                }, 800);
+            });
+
+           
+           
+        });
+    </script>
+}

@@ -1,0 +1,291 @@
+﻿@model Cyber360.Models.Proveedore
+
+@{
+    ViewData["Title"] = "Editar Proveedor - CyberCafé";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-group label {
+        color: var(--cyber-accent);
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .form-control {
+        background-color: var(--cyber-dark);
+        color: var(--cr-screen);
+        border: 1px solid var(--cyber-blue);
+        padding: 12px;
+        width: 100%;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 10px var(--cyber-accent);
+        }
+
+    .text-danger {
+        color: #ff3333;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: block;
+        text-shadow: 0 0 3px #ff3333;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 10px 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 15px var(--cyber-blue);
+            transform: translateY(-2px);
+        }
+
+    .cyber-btn-warning {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+        .cyber-btn-warning:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 15px var(--cyber-accent);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border {
+        border: 2px solid var(--cyber-blue);
+        position: relative;
+    }
+
+        .pixel-border:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+
+    .status-on {
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+    }
+
+    .cyber-footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.9rem;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .id-display {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-accent);
+        padding: 10px;
+        border: 1px dashed var(--cyber-blue);
+        margin-bottom: 20px;
+        font-family: 'Courier New', monospace;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="cyber-header">
+            <i class="fas fa-user-edit"></i> EDITAR PROVEEDOR
+        </h1>
+        <div class="text-right">
+            <span class="cr-effect">Sistema de Proveedores v1.0</span><br>
+            <span class="status-light status-on"></span>
+            <small>En línea</small>
+        </div>
+    </div>
+
+    <div class="id-display">
+        <i class="fas fa-id-card"></i> ID de Proveedor: @Model.Id
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit" class="cyber-form">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Nombre completo del proveedor" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Correo" class="control-label"></label>
+                    <input asp-for="Correo" class="form-control" placeholder="correo@proveedor.com" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NombredeEmpresa" class="control-label"></label>
+                    <input asp-for="NombredeEmpresa" class="form-control" placeholder="Nombre de la empresa" />
+                    <span asp-validation-for="NombredeEmpresa" class="text-danger"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="cyber-btn cyber-btn-warning">
+                        <i class="fas fa-save"></i> GUARDAR CAMBIOS
+                    </button>
+                    <a asp-action="Index" class="cyber-btn cyber-btn-outline">
+                        <i class="fas fa-arrow-left"></i> VOLVER
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">F1-Ayuda</span> |
+                <span class="cr-effect">F5-Actualizar</span>
+            </div>
+            <div>
+                <span class="cr-effect">© 2023 CyberCafé La Réd</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de máquina de escribir para la versión
+            const versionElement = document.querySelector('.cr-effect');
+            let versionText = versionElement.textContent;
+            versionElement.textContent = '';
+
+            let i = 0;
+            const typeWriter = setInterval(() => {
+                if (i < versionText.length) {
+                    versionElement.textContent += versionText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeWriter);
+                }
+            }, 100);
+
+            // Efecto para los inputs
+            const inputs = document.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.boxShadow = '0 0 15px var(--cyber-accent)';
+                    this.style.borderColor = 'var(--cyber-accent)';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.boxShadow = 'none';
+                    this.style.borderColor = 'var(--cyber-blue)';
+                });
+            });
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,356 @@
+﻿@model IEnumerable<Cyber360.Models.Venta>
+
+@{
+    ViewData["Title"] = "Registro de Ventas - CyberCafé";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+    }
+
+        .cyber-table th {
+            background-color: var(--cyber-blue);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--cyber-dark);
+        }
+
+        .cyber-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--cyber-gray);
+            background-color: var(--cyber-dark);
+        }
+
+        .cyber-table tr:nth-child(even) td {
+            background-color: #222;
+        }
+
+        .cyber-table tr:hover td {
+            background-color: #1a1a1a;
+            color: var(--cr-screen);
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 8px 15px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-accent {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+        .cyber-btn-accent:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 10px var(--cyber-accent);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+
+    .cyber-btn-warning {
+        background-color: #ffcc00;
+        color: black;
+    }
+
+        .cyber-btn-warning:hover {
+            background-color: #e6b800;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+
+    .status-on {
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+    }
+
+    .status-off {
+        background-color: #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+    }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border {
+        border: 2px solid var(--cyber-blue);
+        position: relative;
+    }
+
+        .pixel-border:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .action-cell {
+        display: flex;
+        gap: 5px;
+    }
+
+    .cyber-footer {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.8rem;
+    }
+
+    .badge-cyber {
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 3px;
+    }
+
+    .badge-active {
+        background-color: #00cc00;
+        color: black;
+    }
+
+    .badge-canceled {
+        background-color: #cc0000;
+        color: white;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="cyber-header">
+            <i class="fas fa-desktop"></i> CYBERCAFÉ LA RÉD
+        </h1>
+        <div class="text-right">
+            <span class="cr-effect">Sistema de Ventas v1.0</span><br>
+            <span class="status-light status-on"></span>
+            <small>En línea</small>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-action="Create" class="cyber-btn cyber-btn-primary">
+            <i class="fas fa-plus"></i> Nueva Venta
+        </a>
+        <div>
+            <span class="cr-effect">@DateTime.Now.ToString("dd/MM/yyyy HH:mm")</span>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha/Hora</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Servicio</th>
+                    <th>Valor</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="cr-effect">@item.Id</td>
+                        <td>@item.Fecha?.ToString("dd/MM/yy HH:mm")</td>
+                        <td>
+                            <span class="status-light @(item.Estado == "Anulada" ? "status-off" : "status-on")"></span>
+                            @item.Cliente?.Nombre
+                        </td>
+                        <td>
+                            @if (item.Producto != null)
+                            {
+                                <span class="cr-effect">@item.Producto.Nombre (x@(item.Cantidad))</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">N/A</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Servicio != null)
+                            {
+                                <span class="cr-effect">@item.Servicio.Nombre (x@(item.CantidadServicio ?? 1))</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">N/A</span>
+                            }
+                        </td>
+                        <td class="cr-effect">@item.valor?.ToString("C")</td>
+                        <td>
+                            @if (item.Estado == "Anulada")
+                            {
+                                <span class="badge-cyber badge-canceled">
+                                    <i class="fas fa-ban"></i> ANULADA
+                                </span>
+                                <div class="small text-muted">@item.FechaAnulacion?.ToString("g")</div>
+                            }
+                            else
+                            {
+                                <span class="badge-cyber badge-active">
+                                    <i class="fas fa-check-circle"></i> ACTIVA
+                                </span>
+                            }
+                        </td>
+                        <td>
+                            <div class="action-cell">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="cyber-btn cyber-btn-outline" title="Detalles">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                @if (item.Estado == "Activa")
+                                {
+                                    <a asp-action="ToggleStatus" asp-route-id="@item.Id" class="cyber-btn cyber-btn-warning" title="Anular Venta">
+                                        <i class="fas fa-ban"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-action="ToggleStatus" asp-route-id="@item.Id" class="cyber-btn cyber-btn-primary" title="Reactivar Venta">
+                                        <i class="fas fa-check-circle"></i>
+                                    </a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">F1-Ayuda</span> |
+                <span class="cr-effect">F5-Actualizar</span>
+            </div>
+            <div>
+                <span class="cr-effect">© @DateTime.Now.Year CyberCafé La Réd</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        // Efecto de terminal parpadeante
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.createElement('span');
+            cursor.className = 'cr-effect';
+            cursor.innerHTML = '█';
+            cursor.style.animation = 'blink 1s infinite';
+
+            const footer = document.querySelector('.cyber-footer');
+            footer.appendChild(cursor);
+
+            // Auto-ocultar mensajes después de 5 segundos
+            setTimeout(function() {
+                $('.alert').alert('close');
+            }, 5000);
+
+            // Inicializar tooltips
+            $('[title]').tooltip();
+        });
+    </script>
+}

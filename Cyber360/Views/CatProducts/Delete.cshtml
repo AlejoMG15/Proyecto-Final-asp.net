@@ -1,0 +1,277 @@
+﻿@model Cyber360.Models.CatProduct
+
+@{
+    ViewData["Title"] = "Eliminar Categoría";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 600px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+        position: relative;
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cyber-details {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-left: 3px solid var(--cyber-accent);
+    }
+
+    .cyber-detail-row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .cyber-detail-label {
+        color: var(--cyber-blue);
+        font-weight: bold;
+        min-width: 150px;
+    }
+
+    .cyber-detail-value {
+        color: var(--cyber-light);
+        flex-grow: 1;
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .cyber-btn-danger {
+        background-color: #cc0000;
+        color: white;
+    }
+
+        .cyber-btn-danger:hover {
+            background-color: #aa0000;
+            box-shadow: 0 0 15px #cc0000;
+            transform: translateY(-2px);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+        }
+
+    .text-danger {
+        color: #ff6666;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: block;
+        text-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+    }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid var(--cyber-accent);
+        pointer-events: none;
+    }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        background-color: #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+        animation: pulse 1s infinite;
+    }
+
+    .cyber-footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.9rem;
+    }
+
+    @@keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .cyber-warning {
+        color: var(--cyber-accent);
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        text-align: center;
+        border: 1px dashed var(--cyber-accent);
+        padding: 15px;
+    }
+</style>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="cyber-alert cyber-alert-danger">
+        <i class="fas fa-exclamation-triangle"></i> @ViewBag.ErrorMessage
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="cyber-alert cyber-alert-danger">
+        <i class="fas fa-exclamation-triangle"></i> @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="cyber-alert cyber-alert-success">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="cyber-container pixel-border">
+    <div class="cyber-header">
+        <div>
+            <i class="fas fa-trash-alt"></i> ELIMINAR CATEGORÍA
+        </div>
+        <div class="text-right">
+            <span class="status-light"></span>
+            <small class="cr-effect">Modo Eliminación</small>
+        </div>
+    </div>
+
+    <div class="cyber-warning">
+        <i class="fas fa-exclamation-triangle"></i> ¿ESTÁS SEGURO QUE QUIERES ELIMINAR ESTA CATEGORÍA?
+    </div>
+
+    <div class="cyber-details">
+        <div class="cyber-detail-row">
+            <div class="cyber-detail-label">
+                <i class="fas fa-tag"></i> NOMBRE:
+            </div>
+            <div class="cyber-detail-value">
+                @Html.DisplayFor(model => model.Nombre)
+            </div>
+        </div>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="Index" class="cyber-btn cyber-btn-outline">
+                <i class="fas fa-arrow-left"></i> CANCELAR
+            </a>
+            <button type="submit" class="cyber-btn cyber-btn-danger">
+                <i class="fas fa-trash"></i> CONFIRMAR ELIMINACIÓN
+            </button>
+        </div>
+    </form>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+            </div>
+            <div>
+                <span class="cr-effect">Cyber360 v2.1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de máquina de escribir para el título
+            const title = document.querySelector('.cyber-header div:first-child');
+            if (title) {
+                const originalText = title.textContent.trim();
+                title.innerHTML = '<i class="fas fa-trash-alt"></i> ';
+
+                let i = 0;
+                const typeWriter = setInterval(() => {
+                    if (i < originalText.length) {
+                        title.innerHTML += originalText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeWriter);
+                    }
+                }, 50);
+            }
+
+            // Efecto de parpadeo para el mensaje de advertencia
+            const warning = document.querySelector('.cyber-warning');
+            if (warning) {
+                setInterval(() => {
+                    warning.style.borderColor = warning.style.borderColor === 'var(--cyber-accent)' ? 'transparent' : 'var(--cyber-accent)';
+                }, 1000);
+            }
+        });
+    </script>
+}

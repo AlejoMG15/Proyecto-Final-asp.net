@@ -1,0 +1,214 @@
+﻿@model Cyber360.Models.Producto
+
+@{
+    ViewData["Title"] = "Nuevo Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cyber-green: #00cc66;
+        --cr-screen: #c0ffc0;
+    }
+
+    .cyber-container {
+        max-width: 800px;
+        margin: 20px auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 30px;
+        background-color: var(--cyber-dark);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .cyber-form-group {
+        margin-bottom: 20px;
+    }
+
+    .cyber-label {
+        color: var(--cyber-blue);
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .cyber-input {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--cyber-gray);
+        border: 1px solid var(--cyber-blue);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        transition: all 0.3s;
+    }
+
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 15px var(--cyber-accent);
+        }
+
+    .cyber-select {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--cyber-gray);
+        border: 1px solid var(--cyber-blue);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+    }
+
+        .cyber-select option {
+            background-color: var(--cyber-dark);
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 15px 10px 15px 0;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-green);
+        color: black;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #00aa55;
+            box-shadow: 0 0 15px var(--cyber-green);
+        }
+
+    .cyber-btn-secondary {
+        background-color: var(--cyber-gray);
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: var(--cyber-dark);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .text-danger {
+        color: #ff4444;
+        font-size: 0.8rem;
+        text-shadow: 0 0 5px #ff0000;
+        font-family: 'Courier New', monospace;
+    }
+
+    .cyber-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, var(--cyber-blue), transparent);
+        margin: 25px 0;
+    }
+
+    .cyber-required:after {
+        content: " *";
+        color: var(--cyber-accent);
+    }
+</style>
+
+<div class="cyber-container">
+    <div class="cyber-header">
+        <i class="fas fa-plus-circle"></i> CREAR NUEVO PRODUCTO
+    </div>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="cyber-form-group">
+            <label class="cyber-label cyber-required" asp-for="Nombre"></label>
+            <input asp-for="Nombre" class="cyber-input" placeholder="INGRESE NOMBRE DEL PRODUCTO" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="cyber-form-group">
+            <label class="cyber-label cyber-required" asp-for="Precio"></label>
+            <input asp-for="Precio" class="cyber-input" placeholder="0.00" />
+            <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+        <div class="cyber-form-group">
+            <label class="cyber-label cyber-required" asp-for="Cantidad"></label>
+            <input asp-for="Cantidad" class="cyber-input" placeholder="0" />
+            <span asp-validation-for="Cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="cyber-form-group">
+            <label class="cyber-label cyber-required" asp-for="CategoriaId"></label>
+            <select asp-for="CategoriaId" class="cyber-select"
+                    asp-items="ViewBag.Categorias">
+                <option value="">-- SELECCIONE CATEGORÍA --</option>
+            </select>
+            <span asp-validation-for="CategoriaId" class="text-danger"></span>
+        </div>
+
+        <div class="cyber-hr"></div>
+
+        <div class="cyber-form-group" style="text-align: center;">
+            <button type="submit" class="cyber-btn cyber-btn-primary">
+                <i class="fas fa-save"></i> GUARDAR PRODUCTO
+            </button>
+            <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+                <i class="fas fa-times"></i> CANCELAR
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de enfoque en los inputs
+            const inputs = document.querySelectorAll('.cyber-input, .cyber-select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.backgroundColor = '#222';
+                    this.style.boxShadow = '0 0 15px var(--cyber-accent)';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.backgroundColor = 'var(--cyber-gray)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            // Validación en tiempo real para precio
+            const precioInput = document.querySelector('input[name="Precio"]');
+            if (precioInput) {
+                precioInput.addEventListener('input', function() {
+                    this.value = this.value.replace(/[^0-9.]/g, '');
+                });
+            }
+        });
+    </script>
+}

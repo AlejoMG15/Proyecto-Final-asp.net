@@ -1,0 +1,288 @@
+﻿@model Cyber360.Models.CatProduct
+
+@{
+    ViewData["Title"] = "Editar Categoría";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 600px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-form-group {
+        margin-bottom: 25px;
+    }
+
+    .cyber-label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--cyber-blue);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .cyber-input {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--cyber-dark);
+        border: 1px solid var(--cyber-blue);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+            background-color: #1a1a1a;
+        }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 15px var(--cyber-blue);
+            transform: translateY(-2px);
+        }
+
+    .cyber-btn-outline {
+        background-color: transparent;
+        color: var(--cyber-blue);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-outline:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+        }
+
+    .cyber-btn-warning {
+        background-color: var(--cyber-accent);
+        color: black;
+    }
+
+        .cyber-btn-warning:hover {
+            background-color: #cc5200;
+            box-shadow: 0 0 15px var(--cyber-accent);
+        }
+
+    .text-danger {
+        color: #ff6666;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: block;
+        text-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+    }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border {
+        position: relative;
+    }
+
+        .pixel-border:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        background-color: var(--cyber-accent);
+        box-shadow: 0 0 5px var(--cyber-accent);
+    }
+
+    .cyber-footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px dashed var(--cyber-blue);
+        color: var(--cyber-accent);
+        font-size: 0.9rem;
+    }
+
+    .id-badge {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-accent);
+        padding: 5px 10px;
+        border: 1px solid var(--cyber-accent);
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="cyber-header">
+            <i class="fas fa-edit"></i> EDITAR CATEGORÍA
+        </h1>
+        <div class="text-right">
+            <span class="status-light"></span>
+            <small class="id-badge">ID: @Model.Id</small>
+        </div>
+    </div>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="cyber-form-group">
+            <label asp-for="Nombre" class="cyber-label">
+                <i class="fas fa-tag"></i> NOMBRE DE CATEGORÍA
+            </label>
+            <input asp-for="Nombre" class="cyber-input" required
+                   placeholder="Ingrese el nombre de la categoría" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <div>
+                <a asp-action="Index" class="cyber-btn cyber-btn-outline">
+                    <i class="fas fa-arrow-left"></i> CANCELAR
+                </a>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="cyber-btn cyber-btn-warning">
+                    <i class="fas fa-trash-alt"></i> ELIMINAR
+                </a>
+            </div>
+            <button type="submit" class="cyber-btn cyber-btn-primary">
+                <i class="fas fa-save"></i> GUARDAR CAMBIOS
+            </button>
+        </div>
+    </form>
+
+    <div class="cyber-footer">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">Última actualización: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+            </div>
+            <div>
+                <span class="cr-effect">Cyber360 v2.1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de máquina de escribir para el título
+            const title = document.querySelector('.cyber-header');
+            if (title) {
+                const originalText = title.textContent;
+                title.textContent = '';
+
+                let i = 0;
+                const typeWriter = setInterval(() => {
+                    if (i < originalText.length) {
+                        title.textContent += originalText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeWriter);
+                    }
+                }, 50);
+            }
+
+            // Efecto de cursor en el input
+            const input = document.querySelector('.cyber-input');
+            if (input) {
+                input.addEventListener('focus', function() {
+                    this.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.7)';
+                    this.style.backgroundColor = '#1a1a1a';
+                });
+
+                input.addEventListener('blur', function() {
+                    this.style.boxShadow = 'none';
+                    this.style.backgroundColor = 'var(--cyber-dark)';
+                });
+            }
+
+            // Efecto de parpadeo para el status light
+            const statusLight = document.querySelector('.status-light');
+            if (statusLight) {
+                setInterval(() => {
+                    statusLight.style.opacity = statusLight.style.opacity === '0.5' ? '1' : '0.5';
+                }, 800);
+            }
+
+            // Confirmación para eliminar
+            const deleteBtn = document.querySelector('.cyber-btn-warning');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', function(e) {
+                    if (!confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+    </script>
+}

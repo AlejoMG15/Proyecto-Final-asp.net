@@ -1,0 +1,266 @@
+﻿@model Cyber360.Models.Venta
+
+@{
+    ViewData["Title"] = "Detalles de Venta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    :root {
+        --cyber-blue: #0066cc;
+        --cyber-dark: #111;
+        --cyber-gray: #333;
+        --cyber-light: #ddd;
+        --cyber-accent: #ff6600;
+        --cr-screen: #c0ffc0;
+    }
+
+    body {
+        background-color: var(--cyber-dark);
+        color: var(--cyber-light);
+        font-family: 'Courier New', monospace;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.03"><rect width="100" height="100" fill="%230066cc"/></svg>');
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cyber-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        border: 3px solid var(--cyber-blue);
+        padding: 20px;
+        background-color: var(--cyber-gray);
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+
+    .cyber-header {
+        color: var(--cyber-accent);
+        border-bottom: 2px dashed var(--cyber-blue);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    .cyber-card {
+        background-color: var(--cyber-dark);
+        border: 1px solid var(--cyber-blue);
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+    }
+
+    .cyber-card-header {
+        background-color: var(--cyber-blue);
+        color: white;
+        padding: 12px;
+        border-bottom: 1px solid var(--cyber-accent);
+    }
+
+    .cyber-card-body {
+        padding: 20px;
+    }
+
+    .cyber-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+        border-bottom: 1px dotted var(--cyber-blue);
+        padding-bottom: 10px;
+    }
+
+    .cyber-dt {
+        width: 25%;
+        color: var(--cyber-accent);
+        font-weight: bold;
+    }
+
+    .cyber-dd {
+        width: 75%;
+        color: var(--cr-screen);
+    }
+
+    .cyber-btn {
+        display: inline-block;
+        padding: 8px 15px;
+        margin: 5px;
+        border: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .cyber-btn-primary {
+        background-color: var(--cyber-blue);
+        color: white;
+    }
+
+        .cyber-btn-primary:hover {
+            background-color: #004080;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cyber-btn-secondary {
+        background-color: var(--cyber-gray);
+        color: var(--cyber-light);
+        border: 1px solid var(--cyber-blue);
+    }
+
+        .cyber-btn-secondary:hover {
+            background-color: var(--cyber-dark);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+    .cr-effect {
+        color: var(--cr-screen);
+        text-shadow: 0 0 5px var(--cr-screen);
+    }
+
+    .pixel-border {
+        border: 2px solid var(--cyber-blue);
+        position: relative;
+    }
+
+        .pixel-border:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--cyber-accent);
+            pointer-events: none;
+        }
+
+    .status-light {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+
+    .status-on {
+        background-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+    }
+</style>
+
+<div class="cyber-container pixel-border">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="cyber-header">
+            <i class="fas fa-desktop"></i> CYBERCAFÉ LA RÉD
+        </h1>
+        <div class="text-right">
+            <span class="cr-effect">Detalles de Venta v1.0</span><br>
+            <span class="status-light status-on"></span>
+            <small>En línea</small>
+        </div>
+    </div>
+
+    <div class="cyber-card">
+        <div class="cyber-card-header">
+            <h3 class="m-0"><i class="fas fa-file-invoice-dollar"></i> DETALLES COMPLETOS DE VENTA</h3>
+        </div>
+        <div class="cyber-card-body">
+            <div class="cyber-row">
+                <div class="cyber-dt">@Html.DisplayNameFor(model => model.Fecha)</div>
+                <div class="cyber-dd cr-effect">@Html.DisplayFor(model => model.Fecha)</div>
+            </div>
+
+            <div class="cyber-row">
+                <div class="cyber-dt">@Html.DisplayNameFor(model => model.Cliente)</div>
+                <div class="cyber-dd">@Html.DisplayFor(model => model.Cliente.Nombre)</div>
+            </div>
+
+            @if (Model.ProductoId.HasValue)
+            {
+                <div class="cyber-row">
+                    <div class="cyber-dt">@Html.DisplayNameFor(model => model.Producto)</div>
+                    <div class="cyber-dd cr-effect">@Html.DisplayFor(model => model.Producto.Nombre)</div>
+                </div>
+
+                <div class="cyber-row">
+                    <div class="cyber-dt">@Html.DisplayNameFor(model => model.Cantidad)</div>
+                    <div class="cyber-dd cr-effect">@Html.DisplayFor(model => model.Cantidad) unidades</div>
+                </div>
+            }
+
+            @if (Model.ServicioId.HasValue)
+            {
+                <div class="cyber-row">
+                    <div class="cyber-dt">@Html.DisplayNameFor(model => model.Servicio)</div>
+                    <div class="cyber-dd cr-effect">@Html.DisplayFor(model => model.Servicio.Nombre)</div>
+                </div>
+
+                <div class="cyber-row">
+                    <div class="cyber-dt">@Html.DisplayNameFor(model => model.CantidadServicio)</div>
+                    <div class="cyber-dd cr-effect">@Html.DisplayFor(model => model.CantidadServicio) horas</div>
+                </div>
+            }
+
+            <div class="cyber-row">
+                <div class="cyber-dt">@Html.DisplayNameFor(model => model.valor)</div>
+                <div class="cyber-dd cr-effect">$@Html.DisplayFor(model => model.valor)</div>
+            </div>
+
+            <div class="mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="cyber-btn cyber-btn-primary">
+                    <i class="fas fa-edit"></i> EDITAR VENTA
+                </a>
+                <a asp-action="Index" class="cyber-btn cyber-btn-secondary">
+                    <i class="fas fa-arrow-left"></i> VOLVER AL LISTADO
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cyber-footer mt-3">
+        <div class="d-flex justify-content-between">
+            <div>
+                <span class="cr-effect">F1-Ayuda</span> |
+                <span class="cr-effect">F5-Actualizar</span>
+            </div>
+            <div>
+                <span class="cr-effect">@DateTime.Now.ToString("dd/MM/yyyy HH:mm")</span>
+            </div>
+            <div>
+                <span class="cr-effect">© 2023 CyberCafé La Réd</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        // Efecto de terminal parpadeante
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.createElement('span');
+            cursor.className = 'cr-effect';
+            cursor.innerHTML = '█';
+            cursor.style.animation = 'blink 1s infinite';
+
+            const footer = document.querySelector('.cyber-footer');
+            footer.appendChild(cursor);
+
+            // Efecto de máquina de escribir para la fecha
+            const dateElement = document.querySelector('.cyber-footer .cr-effect');
+            let dateText = dateElement.textContent;
+            dateElement.textContent = '';
+
+            let i = 0;
+            const typeWriter = setInterval(() => {
+                if (i < dateText.length) {
+                    dateElement.textContent += dateText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeWriter);
+                }
+            }, 100);
+        });
+    </script>
+}
