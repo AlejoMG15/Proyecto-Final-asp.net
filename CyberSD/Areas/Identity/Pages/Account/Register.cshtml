@@ -1,0 +1,331 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Nuevo Registro";
+}
+
+<style>
+    :root {
+        --cyber-primary: #00f0ff;
+        --cyber-secondary: #ff00f0;
+        --cyber-dark: #0a0a1a;
+        --cyber-darker: #050510;
+        --cyber-light: #e0e0ff;
+        --cyber-accent: #00ff88;
+        --cyber-danger: #ff0055;
+        --cyber-text: #c0f0ff;
+        --cyber-text-secondary: #a0a0ff;
+        --cyber-input-bg: rgba(10, 10, 26, 0.7);
+    }
+
+    .cyber-register-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: var(--cyber-input-bg);
+        border: 2px solid var(--cyber-primary);
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), inset 0 0 20px rgba(0, 240, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .cyber-register-container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--cyber-secondary);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+    .cyber-register-title {
+        color: var(--cyber-primary);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px var(--cyber-primary);
+        width: 100%;
+    }
+
+    .cyber-register-subtitle {
+        color: var(--cyber-text-secondary);
+        margin-bottom: 30px;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .cyber-form-column {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+    }
+
+    .cyber-form-divider {
+        position: relative;
+        margin: 0 20px;
+        align-self: stretch;
+    }
+
+        .cyber-form-divider::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            border-left: 1px dashed var(--cyber-primary);
+            opacity: 0.3;
+        }
+
+    .cyber-form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .cyber-form-label {
+        display: block;
+        color: var(--cyber-primary);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    .cyber-form-input {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--cyber-dark);
+        border: 1px solid var(--cyber-primary);
+        color: var(--cyber-text);
+        font-family: 'Courier New', monospace;
+        transition: all 0.3s;
+    }
+
+        .cyber-form-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 15px var(--cyber-primary);
+        }
+
+        .cyber-form-input::placeholder {
+            color: rgba(160, 160, 255, 0.5);
+        }
+
+    .cyber-validation {
+        color: var(--cyber-danger);
+        font-size: 0.8rem;
+        margin-top: 5px;
+        text-shadow: 0 0 3px var(--cyber-danger);
+    }
+
+    .cyber-btn-register {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--cyber-accent);
+        color: var(--cyber-dark);
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-bottom: 20px;
+        font-family: 'Courier New', monospace;
+    }
+
+        .cyber-btn-register:hover {
+            background-color: var(--cyber-accent);
+            box-shadow: 0 0 20px var(--cyber-accent);
+            transform: translateY(-3px);
+        }
+
+        .cyber-btn-register:active {
+            transform: translateY(0);
+        }
+
+    .cyber-external-title {
+        color: var(--cyber-text);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    .cyber-external-divider {
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--cyber-primary), transparent);
+        margin: 20px 0;
+    }
+
+    .cyber-external-btn {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        background-color: transparent;
+        border: 1px solid var(--cyber-primary);
+        color: var(--cyber-text);
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+        .cyber-external-btn:hover {
+            background-color: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 10px var(--cyber-primary);
+        }
+
+    .cyber-no-external {
+        color: var(--cyber-text-secondary);
+        font-style: italic;
+    }
+
+    .cyber-external-link {
+        color: var(--cyber-primary);
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+        .cyber-external-link:hover {
+            text-shadow: 0 0 8px var(--cyber-primary);
+        }
+
+    /* Efecto de terminal parpadeante */
+    .terminal-cursor {
+        display: inline-block;
+        width: 10px;
+        height: 20px;
+        background-color: var(--cyber-primary);
+        animation: blink 1s infinite;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+
+    @@keyframes blink {
+        0%, 100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<div class="cyber-register-container">
+    <h1 class="cyber-register-title">NUEVO REGISTRO<span class="terminal-cursor"></span></h1>
+    <p class="cyber-register-subtitle">Crea tu identidad en el sistema</p>
+
+    <div class="cyber-form-column">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="ModelOnly" class="cyber-validation" role="alert"></div>
+
+            <div class="cyber-form-group">
+                <label asp-for="Input.Email" class="cyber-form-label">
+                    <i class="fas fa-at"></i> EMAIL
+                </label>
+                <input asp-for="Input.Email" class="cyber-form-input"
+                       autocomplete="username" aria-required="true"
+                       placeholder="usuario@dominio.com" />
+                <span asp-validation-for="Input.Email" class="cyber-validation"></span>
+            </div>
+
+            <div class="cyber-form-group">
+                <label asp-for="Input.Password" class="cyber-form-label">
+                    <i class="fas fa-key"></i> CONTRASEÑA
+                </label>
+                <input asp-for="Input.Password" class="cyber-form-input"
+                       autocomplete="new-password" aria-required="true"
+                       placeholder="••••••••" />
+                <span asp-validation-for="Input.Password" class="cyber-validation"></span>
+            </div>
+
+            <div class="cyber-form-group">
+                <label asp-for="Input.ConfirmPassword" class="cyber-form-label">
+                    <i class="fas fa-key"></i> CONFIRMAR CONTRASEÑA
+                </label>
+                <input asp-for="Input.ConfirmPassword" class="cyber-form-input"
+                       autocomplete="new-password" aria-required="true"
+                       placeholder="••••••••" />
+                <span asp-validation-for="Input.ConfirmPassword" class="cyber-validation"></span>
+            </div>
+
+            <button id="registerSubmit" type="submit" class="cyber-btn-register">
+                <i class="fas fa-user-plus"></i> REGISTRAR CUENTA
+            </button>
+        </form>
+    </div>
+
+    <div class="cyber-form-divider"></div>
+
+    <div class="cyber-form-column">
+        <h3 class="cyber-external-title">ACCESO EXTERNO</h3>
+        <hr class="cyber-external-divider" />
+
+        @{
+            if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            {
+                <div class="cyber-no-external">
+                    <p>
+                        No hay servicios de autenticación externos configurados. Consulta este
+                        <a href="https://go.microsoft.com/fwlink/?LinkID=532715" class="cyber-external-link">
+                            artículo sobre configuración de autenticación externa
+                        </a>.
+                    </p>
+                </div>
+            }
+            else
+            {
+                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins!)
+                        {
+                            <button type="submit" class="cyber-external-btn" name="provider" value="@provider.Name"
+                                    title="Regístrate usando tu cuenta de @provider.DisplayName">
+                                <i class="fab fa-@provider.Name.ToLower()"></i> @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Efecto de escritura para el título
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.cyber-register-title');
+            const text = 'NUEVO REGISTRO';
+            title.innerHTML = '';
+
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    title.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                    title.innerHTML += '<span class="terminal-cursor"></span>';
+                }
+            }, 100);
+
+            // Efecto hover para botones externos
+            document.querySelectorAll('.cyber-external-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(5px)';
+                });
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+}

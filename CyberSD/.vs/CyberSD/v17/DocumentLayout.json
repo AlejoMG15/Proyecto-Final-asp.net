@@ -1,0 +1,630 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\manage\\assignrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\assignrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\controllers\\equipoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:controllers\\equipoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\roles\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\roles\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\equipoes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\equipoes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\helpers\\dynamicroleauthorizationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:helpers\\dynamicroleauthorizationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\userwithrolesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\userwithrolesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\roleselection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\roleselection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\roledetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\roledetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\managerolesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\managerolesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\createroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\createroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\equipoes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\equipoes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\users\\manageroles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\users\\manageroles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\manage\\roles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\roles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\manage\\personaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\personaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\accessdenied.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\accessdenied.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\equipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\equipo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\areas\\identity\\pages\\account\\logout.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:areas\\identity\\pages\\account\\logout.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\cybersd.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:cybersd.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\models\\cybersdcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:models\\cybersdcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|c:\\adso\\sena\\trimestre 4\\.net\\cybersd\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0D7CE090-D0A7-44B1-BA04-A1B6D14E99F7}|CyberSD.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:21:18.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EquipoesController.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\EquipoesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EquipoesController.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\EquipoesController.cs",
+              "RelativeToolTip": "Controllers\\EquipoesController.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAUwKEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:24:20.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwCEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T03:25:29.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Index.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAALsAAAAAAAAAAAAiwNQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T05:01:29.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Roles\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Index.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Roles\\Index.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Index.cshtml",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAiwAEBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T19:05:26.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Roles\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Details.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Roles\\Details.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Details.cshtml",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAiwLYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T19:21:16.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AssignRole.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\AssignRole.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\AssignRole.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\AssignRole.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\AssignRole.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T18:32:09.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAANwAAAAAAAAAAAAAAC4BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T21:40:38.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAADEBAAAAAAAAAAAiwEoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T21:43:18.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Equipoes\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Equipoes\\Index.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Equipoes\\Index.cshtml",
+              "RelativeToolTip": "Views\\Equipoes\\Index.cshtml",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAiwOAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T17:25:07.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T05:00:53.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RolesController.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Controllers\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T19:04:24.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DynamicRoleAuthorizationFilter.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Helpers\\DynamicRoleAuthorizationFilter.cs",
+              "RelativeDocumentMoniker": "Helpers\\DynamicRoleAuthorizationFilter.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Helpers\\DynamicRoleAuthorizationFilter.cs",
+              "RelativeToolTip": "Helpers\\DynamicRoleAuthorizationFilter.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T20:00:39.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAQwG4AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:21:32.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserWithRolesViewModel.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\UserWithRolesViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\UserWithRolesViewModel.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\UserWithRolesViewModel.cs",
+              "RelativeToolTip": "Models\\UserWithRolesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T18:42:24.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RoleSelection.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\RoleSelection.cs",
+              "RelativeDocumentMoniker": "Models\\RoleSelection.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\RoleSelection.cs",
+              "RelativeToolTip": "Models\\RoleSelection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T18:59:39.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RoleDetailsViewModel.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\RoleDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\RoleDetailsViewModel.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\RoleDetailsViewModel.cs",
+              "RelativeToolTip": "Models\\RoleDetailsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T19:29:09.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ManageRolesViewModel.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\ManageRolesViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ManageRolesViewModel.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\ManageRolesViewModel.cs",
+              "RelativeToolTip": "Models\\ManageRolesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T18:34:53.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T20:35:55.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CreateRoleViewModel.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\CreateRoleViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\CreateRoleViewModel.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\CreateRoleViewModel.cs",
+              "RelativeToolTip": "Models\\CreateRoleViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T19:04:56.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T17:23:52.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Equipoes\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Equipoes\\Details.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Equipoes\\Details.cshtml",
+              "RelativeToolTip": "Views\\Equipoes\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T19:44:14.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Roles\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Create.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Roles\\Create.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T19:05:46.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ManageRoles.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Users\\ManageRoles.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\ManageRoles.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Users\\ManageRoles.cshtml",
+              "RelativeToolTip": "Views\\Users\\ManageRoles.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T18:37:39.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Roles.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\Roles.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\Roles.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\Roles.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\Roles.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T18:31:36.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PersonalData.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T04:59:48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T04:59:13.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AccessDenied.cshtml.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml.cs",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:42:41.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AccessDenied.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T04:42:38.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Users\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Edit.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Views\\Users\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Users\\Edit.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T05:06:08.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Equipo.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\Equipo.cs",
+              "RelativeDocumentMoniker": "Models\\Equipo.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\Equipo.cs",
+              "RelativeToolTip": "Models\\Equipo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:37:29.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Logout.cshtml",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T04:31:46.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Logout.cshtml.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAADwvxYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T04:31:40.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "CyberSD.csproj",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\CyberSD.csproj",
+              "RelativeDocumentMoniker": "CyberSD.csproj",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\CyberSD.csproj",
+              "RelativeToolTip": "CyberSD.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-10T04:17:25.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ScaffoldingReadMe.txt",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\ScaffoldingReadMe.txt",
+              "RelativeDocumentMoniker": "ScaffoldingReadMe.txt",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\ScaffoldingReadMe.txt",
+              "RelativeToolTip": "ScaffoldingReadMe.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-04-10T03:36:47.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-10T03:18:29.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "CyberSdContext.cs",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\CyberSdContext.cs",
+              "RelativeDocumentMoniker": "Models\\CyberSdContext.cs",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\Models\\CyberSdContext.cs",
+              "RelativeToolTip": "Models\\CyberSdContext.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T03:18:24.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\ADSO\\SENA\\Trimestre 4\\.Net\\CyberSD\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAEwAoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-10T03:18:22.524Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

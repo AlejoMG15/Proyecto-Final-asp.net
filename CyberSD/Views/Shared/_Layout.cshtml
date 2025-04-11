@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CyberSD</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="~/CyberSD.styles.css" asp-append-version="true" />
+    <style>
+        :root {
+            --cyber-primary: #00f0ff;
+            --cyber-secondary: #ff00f0;
+            --cyber-dark: #0a0a1a;
+            --cyber-darker: #050510;
+            --cyber-light: #e0e0ff;
+            --cyber-accent: #00ff88;
+            --cyber-danger: #ff0055;
+            --cyber-warning: #ffaa00;
+            --cyber-text: #c0f0ff;
+            --cyber-text-secondary: #a0a0ff;
+        }
+
+        body {
+            background-color: var(--cyber-dark);
+            color: var(--cyber-text);
+            font-family: 'Courier New', monospace;
+            background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Cyberpunk */
+        .navbar {
+            background-color: var(--cyber-darker) !important;
+            border-bottom: 1px solid var(--cyber-primary) !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .navbar-brand {
+            color: var(--cyber-primary) !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px var(--cyber-primary);
+        }
+
+            .navbar-brand:hover {
+                animation: text-glow 1s infinite alternate;
+            }
+
+        .nav-link {
+            color: var(--cyber-text-secondary) !important;
+            font-weight: bold;
+            margin: 0 10px;
+            position: relative;
+        }
+
+            .nav-link:hover {
+                color: var(--cyber-primary) !important;
+                text-shadow: 0 0 8px var(--cyber-primary);
+            }
+
+            .nav-link:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--cyber-primary);
+                transition: width 0.3s;
+            }
+
+            .nav-link:hover:after {
+                width: 100%;
+            }
+
+        .navbar-toggler {
+            border-color: var(--cyber-primary) !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 240, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            padding-top: 20px;
+        }
+
+        /* Footer Cyberpunk */
+        .footer {
+            background-color: var(--cyber-darker);
+            border-top: 1px solid var(--cyber-secondary);
+            color: var(--cyber-text-secondary);
+            padding: 15px 0;
+            margin-top: auto;
+        }
+
+            .footer a {
+                color: var(--cyber-accent);
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    color: var(--cyber-primary);
+                    text-shadow: 0 0 8px var(--cyber-primary);
+                }
+
+        /* Cyberpunk Elements */
+        .cyber-card {
+            background-color: rgba(10, 10, 26, 0.8);
+            border: 1px solid var(--cyber-primary);
+            border-radius: 0;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+            .cyber-card:hover {
+                box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+                transform: translateY(-2px);
+            }
+
+        .cyber-card-header {
+            background-color: rgba(0, 240, 255, 0.1);
+            border-bottom: 1px solid var(--cyber-primary);
+            color: var(--cyber-primary);
+            font-weight: bold;
+            padding: 10px 15px;
+            text-transform: uppercase;
+        }
+
+      
+    
+        /* Cyberpunk Buttons */
+        .btn-cyber {
+            border-radius: 0;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cyber-primary {
+            background-color: var(--cyber-primary);
+            color: var(--cyber-dark);
+        }
+
+            .btn-cyber-primary:hover {
+                background-color: var(--cyber-primary);
+                color: var(--cyber-dark);
+                box-shadow: 0 0 15px var(--cyber-primary);
+                transform: translateY(-2px);
+            }
+
+        .btn-cyber-danger {
+            background-color: var(--cyber-danger);
+            color: white;
+        }
+
+            .btn-cyber-danger:hover {
+                background-color: var(--cyber-danger);
+                color: white;
+                box-shadow: 0 0 15px var(--cyber-danger);
+                animation: pulse 0.5s infinite alternate;
+            }
+
+        /* Cyberpunk Alerts */
+        .alert-cyber {
+            border-radius: 0;
+            border: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .alert-cyber-success {
+            background-color: rgba(0, 255, 136, 0.2);
+            border-left: 4px solid var(--cyber-accent);
+        }
+
+        .alert-cyber-danger {
+            background-color: rgba(255, 0, 85, 0.2);
+            border-left: 4px solid var(--cyber-danger);
+        }
+
+
+        .nav-link {
+            margin: 5px 0;
+            padding: 10px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-robot"></i> CYBER_SD
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                     @if (User.Identity.IsAuthenticated)
+                        {
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home"></i> HOME
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                <i class="fas fa-lock"></i> PRIVACY
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Equipoes" asp-action="Index">
+                                <i class="fas fa-desktop"></i> EQUIPOS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">
+                                <i class="fas fa-users"></i> USERS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Roles" asp-action="Index">
+                                <i class="fas fa-user-shield"></i> ROLES
+                            </a>
+                        </li>
+                    </ul>
+                    }
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <span class="d-block mb-2">
+                <i class="fas fa-terminal"></i> SYSTEM STATUS: <span class="text-success">ONLINE</span>
+                &copy; 2025 - CYBER_SD - <a asp-area="" asp-controller="Home" asp-action="Privacy">PRIVACY POLICY</a>
+            </span>
+           
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de escritura para el título
+            const brand = document.querySelector('.navbar-brand');
+            if (brand) {
+                const text = 'CYBER_SD';
+                brand.innerHTML = '<i class="fas fa-robot"></i> ';
+
+                let i = 0;
+                const typingEffect = setInterval(() => {
+                    if (i < text.length) {
+                        brand.innerHTML += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingEffect);
+                    }
+                }, 100);
+            }
+
+            // Auto-ocultar mensajes con efecto cyberpunk
+            setTimeout(function() {
+                const alerts = document.querySelectorAll('.alert');
+                alerts.forEach(function(alert) {
+                    alert.style.transition = 'all 0.5s';
+                    alert.style.opacity = '0';
+                    alert.style.transform = 'translateX(100%)';
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 500);
+                });
+            }, 5000);
+
+            // Efecto hover para tarjetas
+            const cards = document.querySelectorAll('.cyber-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 0 25px rgba(0, 240, 255, 0.4)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.2)';
+                });
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

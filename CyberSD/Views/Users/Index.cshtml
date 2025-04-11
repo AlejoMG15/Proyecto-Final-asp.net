@@ -1,0 +1,213 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CyberSD.Models
+@model List<UserWithRolesViewModel>
+@inject UserManager<IdentityUser> UserManager
+
+<style>
+    .cyber-users-container {
+        background-color: rgba(10, 10, 26, 0.8);
+        border: 1px solid var(--cyber-primary);
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .cyber-users-title {
+        color: var(--cyber-primary);
+        border-bottom: 2px solid var(--cyber-primary);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: var(--cyber-text);
+    }
+
+        .cyber-table th {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--cyber-primary);
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--cyber-primary);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .cyber-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            vertical-align: middle;
+        }
+
+        .cyber-table tr:hover td {
+            background-color: rgba(0, 240, 255, 0.05);
+            color: var(--cyber-accent);
+        }
+
+    .cyber-badge {
+        border-radius: 0;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-right: 5px;
+        display: inline-block;
+    }
+
+    .badge-role {
+        background-color: rgba(255, 0, 240, 0.2);
+        color: var(--cyber-secondary);
+        border: 1px solid var(--cyber-secondary);
+    }
+
+    .btn-cyber {
+        border-radius: 0;
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    .btn-cyber-warning {
+        background-color: var(--cyber-warning);
+        color: var(--cyber-dark);
+    }
+
+        .btn-cyber-warning:hover {
+            background-color: var(--cyber-warning);
+            box-shadow: 0 0 10px var(--cyber-warning);
+            transform: translateY(-2px);
+        }
+
+    .btn-cyber-danger {
+        background-color: var(--cyber-danger);
+        color: white;
+    }
+
+        .btn-cyber-danger:hover {
+            background-color: var(--cyber-danger);
+            box-shadow: 0 0 10px var(--cyber-danger);
+            animation: pulse 0.5s infinite alternate;
+        }
+
+    @@keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.05);
+        }
+    }
+
+    .action-cell {
+        display: flex;
+        gap: 10px;
+    }
+
+    .no-users {
+        color: var(--cyber-text-secondary);
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+    }
+</style>
+
+<div class="cyber-users-container">
+    <h2 class="cyber-users-title">
+        <i class="fas fa-users-cog"></i> ADMINISTRACIÓN DE USUARIOS
+    </h2>
+
+    @if (Model.Any())
+    {
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Acciones</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var userWithRoles in Model)
+                {
+                    <tr>
+                        <td>@userWithRoles.User.Email</td>
+                        <td>
+                            @if (userWithRoles.Roles.Any())
+                            {
+                                foreach (var role in userWithRoles.Roles)
+                                {
+                                    <span class="cyber-badge badge-role">@role</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin roles asignados</span>
+                            }
+                        </td>
+                        <td class="action-cell">
+                            <a asp-action="ManageRoles"
+                               asp-route-userId="@userWithRoles.User.Id"
+                               class="btn-cyber btn-cyber-warning">
+                                <i class="fas fa-user-shield"></i> GESTIONAR ROLES
+                            </a>
+                        </td>
+                        <td>
+                            <form asp-action="DeleteUser" method="post" onsubmit="return confirm('¿CONFIRMAS QUE DESEAS ELIMINAR ESTE USUARIO?');">
+                                <input type="hidden" name="id" value="@userWithRoles.User.Id" />
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn-cyber btn-cyber-danger">
+                                    <i class="fas fa-trash-alt"></i> ELIMINAR
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="no-users">
+            <i class="fas fa-user-slash fa-2x"></i>
+            <p>No hay usuarios registrados en el sistema</p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Efecto de confirmación para eliminación
+        document.querySelectorAll('form[onsubmit]').forEach(form => {
+            form.onsubmit = function(e) {
+                const confirmMessage = this.getAttribute('onsubmit').match(/return confirm\('(.+?)'\)/)[1];
+                if (!confirm(confirmMessage)) {
+                    e.preventDefault();
+                    return false;
+                }
+                return true;
+            };
+        });
+
+        // Efecto hover para botones
+        document.querySelectorAll('.btn-cyber').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+}

@@ -1,0 +1,258 @@
+﻿@model List<IdentityRole>
+
+<style>
+    .cyber-roles-container {
+        background-color: rgba(10, 10, 26, 0.8);
+        border: 1px solid var(--cyber-primary);
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .cyber-roles-title {
+        color: var(--cyber-primary);
+        border-bottom: 2px solid var(--cyber-primary);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: var(--cyber-text);
+    }
+
+        .cyber-table th {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--cyber-primary);
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--cyber-primary);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .cyber-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            vertical-align: middle;
+        }
+
+        .cyber-table tr:hover td {
+            background-color: rgba(0, 240, 255, 0.05);
+            color: var(--cyber-accent);
+        }
+
+    .btn-cyber {
+        border-radius: 0;
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    .btn-cyber-success {
+        background-color: var(--cyber-accent);
+        color: var(--cyber-dark);
+        margin-bottom: 20px;
+    }
+
+        .btn-cyber-success:hover {
+            background-color: var(--cyber-accent);
+            box-shadow: 0 0 10px var(--cyber-accent);
+            transform: translateY(-2px);
+        }
+
+    .btn-cyber-info {
+        background-color: var(--cyber-primary);
+        color: var(--cyber-dark);
+    }
+
+        .btn-cyber-info:hover {
+            background-color: var(--cyber-primary);
+            box-shadow: 0 0 10px var(--cyber-primary);
+        }
+
+    .btn-cyber-danger {
+        background-color: var(--cyber-danger);
+        color: white;
+    }
+
+        .btn-cyber-danger:hover {
+            background-color: var(--cyber-danger);
+            box-shadow: 0 0 10px var(--cyber-danger);
+            animation: pulse 0.5s infinite alternate;
+        }
+
+    .btn-cyber-disabled {
+        background-color: #333;
+        color: #666;
+        cursor: not-allowed;
+    }
+
+    .action-cell {
+        display: flex;
+        gap: 10px;
+    }
+
+    .no-roles {
+        color: var(--cyber-text-secondary);
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+    }
+
+    .alert-cyber {
+        border-radius: 0;
+        border: none;
+        color: white;
+        font-weight: bold;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    .alert-cyber-success {
+        background-color: rgba(0, 255, 136, 0.2);
+        border-left: 4px solid var(--cyber-accent);
+    }
+
+    .alert-cyber-danger {
+        background-color: rgba(255, 0, 85, 0.2);
+        border-left: 4px solid var(--cyber-danger);
+    }
+
+    @@keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.05);
+        }
+    }
+
+    .role-name {
+        font-weight: bold;
+        color: var(--cyber-text);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .protected-role {
+        color: var(--cyber-danger);
+        position: relative;
+    }
+
+        .protected-role:after {
+            content: "PROTEGIDO";
+            position: absolute;
+            font-size: 0.6rem;
+            color: var(--cyber-danger);
+            top: -10px;
+            right: 0;
+        }
+</style>
+
+<div class="cyber-roles-container">
+    <h2 class="cyber-roles-title">
+        <i class="fas fa-user-shield"></i> ADMINISTRACIÓN DE ROLES
+    </h2>
+
+    <a asp-action="Create" class="btn-cyber btn-cyber-success">
+        <i class="fas fa-plus-circle"></i> CREAR NUEVO ROL
+    </a>
+
+    @if (Model.Any())
+    {
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="role-name @((role.Name == "Administrador" || role.Name == "Usuario") ? "protected-role" : "")">
+                                @role.Name
+                            </span>
+                        </td>
+                        <td class="action-cell">
+                            <a asp-action="Details" asp-route-id="@role.Id"
+                               class="btn-cyber btn-cyber-info">
+                                <i class="fas fa-eye"></i> DETALLES
+                            </a>
+
+                            <form asp-action="DeleteRole" method="post"
+                                  onsubmit="return confirm('¿CONFIRMAS QUE DESEAS ELIMINAR EL ROL @role.Name?');">
+                                <input type="hidden" name="id" value="@role.Id" />
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn-cyber btn-cyber-danger @((role.Name == "Administrador" || role.Name == "Usuario") ? "btn-cyber-disabled" : "")"
+                                @((role.Name == "Administrador" || role.Name == "Usuario") ? "disabled" : "")>
+                                    <i class="fas fa-trash-alt"></i> ELIMINAR
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="no-roles">
+            <i class="fas fa-exclamation-triangle fa-2x"></i>
+            <p>No hay roles configurados en el sistema</p>
+        </div>
+    }
+
+    <!-- Mostrar mensajes de éxito/error -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert-cyber alert-cyber-success mt-3">
+            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert-cyber alert-cyber-danger mt-3">
+            <i class="fas fa-exclamation-circle"></i> @TempData["ErrorMessage"]
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Efecto de confirmación para eliminación
+        document.querySelectorAll('form[onsubmit]').forEach(form => {
+            form.onsubmit = function(e) {
+                const confirmMessage = this.getAttribute('onsubmit').match(/return confirm\('(.+?)'\)/)[1];
+                if (!confirm(confirmMessage)) {
+                    e.preventDefault();
+                    return false;
+                }
+                return true;
+            };
+        });
+
+        // Efecto hover para botones
+        document.querySelectorAll('.btn-cyber:not(.btn-cyber-disabled)').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+}

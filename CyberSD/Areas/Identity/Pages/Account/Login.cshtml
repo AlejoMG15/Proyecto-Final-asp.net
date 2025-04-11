@@ -1,0 +1,303 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Acceso al Sistema";
+}
+
+<style>
+    :root {
+        --cyber-primary: #00f0ff;
+        --cyber-secondary: #ff00f0;
+        --cyber-dark: #0a0a1a;
+        --cyber-darker: #050510;
+        --cyber-light: #e0e0ff;
+        --cyber-accent: #00ff88;
+        --cyber-danger: #ff0055;
+        --cyber-text: #c0f0ff;
+        --cyber-text-secondary: #a0a0ff;
+        --cyber-input-bg: rgba(10, 10, 26, 0.7);
+    }
+
+    .cyber-login-container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: var(--cyber-input-bg);
+        border: 2px solid var(--cyber-primary);
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), inset 0 0 20px rgba(0, 240, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .cyber-login-container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--cyber-secondary);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+    .cyber-login-title {
+        color: var(--cyber-primary);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px var(--cyber-primary);
+    }
+
+    .cyber-login-subtitle {
+        color: var(--cyber-text-secondary);
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1rem;
+    }
+
+    .cyber-form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .cyber-form-label {
+        display: block;
+        color: var(--cyber-primary);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    .cyber-form-input {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--cyber-dark);
+        border: 1px solid var(--cyber-primary);
+        color: var(--cyber-text);
+        font-family: 'Courier New', monospace;
+        transition: all 0.3s;
+    }
+
+        .cyber-form-input:focus {
+            outline: none;
+            border-color: var(--cyber-accent);
+            box-shadow: 0 0 15px var(--cyber-primary);
+        }
+
+        .cyber-form-input::placeholder {
+            color: rgba(160, 160, 255, 0.5);
+        }
+
+    .cyber-validation {
+        color: var(--cyber-danger);
+        font-size: 0.8rem;
+        margin-top: 5px;
+        text-shadow: 0 0 3px var(--cyber-danger);
+    }
+
+    .cyber-checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+        .cyber-checkbox input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--cyber-primary);
+        }
+
+        .cyber-checkbox label {
+            color: var(--cyber-text);
+            cursor: pointer;
+        }
+
+    .cyber-btn-login {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--cyber-primary);
+        color: var(--cyber-dark);
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-bottom: 20px;
+        font-family: 'Courier New', monospace;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .cyber-btn-login:hover {
+            background-color: var(--cyber-primary);
+            box-shadow: 0 0 20px var(--cyber-primary);
+            transform: translateY(-3px);
+        }
+
+        .cyber-btn-login:active {
+            transform: translateY(0);
+        }
+
+    .cyber-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .cyber-link {
+        color: var(--cyber-text-secondary);
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s;
+        position: relative;
+    }
+
+        .cyber-link:hover {
+            color: var(--cyber-primary);
+            text-shadow: 0 0 8px var(--cyber-primary);
+        }
+
+        .cyber-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--cyber-primary);
+            transition: width 0.3s;
+        }
+
+        .cyber-link:hover::after {
+            width: 100%;
+        }
+
+    /* Efecto de terminal parpadeante */
+    .terminal-cursor {
+        display: inline-block;
+        width: 10px;
+        height: 20px;
+        background-color: var(--cyber-primary);
+        animation: blink 1s infinite;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+
+    @@keyframes blink {
+        0%, 100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* Efecto de escaneo */
+    .scanline {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.5), transparent);
+        animation: scan 8s linear infinite;
+        z-index: -1;
+    }
+
+    @@keyframes scan {
+        0% {
+            top: -100%;
+        }
+
+        100% {
+            top: 100%;
+        }
+    }
+</style>
+
+<div class="cyber-login-container">
+    <div class="scanline"></div>
+
+    <h1 class="cyber-login-title">ACCESO AL SISTEMA<span class="terminal-cursor"></span></h1>
+    <p class="cyber-login-subtitle">Autenticación requerida para continuar</p>
+
+    <form id="account" method="post">
+        <div asp-validation-summary="ModelOnly" class="cyber-validation" role="alert"></div>
+
+        <div class="cyber-form-group">
+            <label asp-for="Input.Email" class="cyber-form-label">
+                <i class="fas fa-user"></i> USUARIO/EMAIL
+            </label>
+            <input asp-for="Input.Email" class="cyber-form-input"
+                   autocomplete="username" aria-required="true"
+                   placeholder="usuario@dominio.com" />
+            <span asp-validation-for="Input.Email" class="cyber-validation"></span>
+        </div>
+
+        <div class="cyber-form-group">
+            <label asp-for="Input.Password" class="cyber-form-label">
+                <i class="fas fa-lock"></i> CONTRASEÑA
+            </label>
+            <input asp-for="Input.Password" class="cyber-form-input"
+                   autocomplete="current-password" aria-required="true"
+                   placeholder="••••••••" />
+            <span asp-validation-for="Input.Password" class="cyber-validation"></span>
+        </div>
+
+        <div class="cyber-checkbox">
+            <input class="form-check-input" asp-for="Input.RememberMe" />
+            <label asp-for="Input.RememberMe" class="form-label">
+                @Html.DisplayNameFor(m => m.Input.RememberMe)
+            </label>
+        </div>
+
+        <button id="login-submit" type="submit" class="cyber-btn-login">
+            <i class="fas fa-terminal"></i> INICIAR SESIÓN
+        </button>
+
+        <div class="cyber-links">
+            <a id="forgot-password" asp-page="./ForgotPassword" class="cyber-link">
+                <i class="fas fa-key"></i> ¿Olvidaste tu contraseña?
+            </a>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="cyber-link">
+                <i class="fas fa-user-plus"></i> Registrar nuevo usuario
+            </a>
+            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="cyber-link">
+                <i class="fas fa-envelope"></i> Reenviar confirmación de email
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Efecto de escritura para el título
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.cyber-login-title');
+            const text = 'ACCESO AL SISTEMA';
+            title.innerHTML = '';
+
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    title.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                    title.innerHTML += '<span class="terminal-cursor"></span>';
+                }
+            }, 100);
+        });
+    </script>
+}
